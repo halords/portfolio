@@ -7,11 +7,14 @@ const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const [isSending, setIsSending] = useState(false);
+
   // Create refs for each section
   const homeRef = useRef<HTMLDivElement>(null);
   const workRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
+
   const links = [
     {
       name: "Github",
@@ -25,17 +28,26 @@ const Portfolio = () => {
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  const sendEmail = (e:any) => {
+  const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSending(true);
 
     emailjs
-      .sendForm('service_8ejug0m', 'template_fwn1aqq', formRef.current!, 'jZL0QCx1vMiJ9JeJQ')
+      .sendForm(
+        "service_8ejug0m",
+        "template_fwn1aqq",
+        formRef.current!,
+        "jZL0QCx1vMiJ9JeJQ"
+      )
       .then(() => {
-        alert('Message sent successfully!');
+        alert("Message sent successfully!");
         formRef.current!.reset();
       })
       .catch(() => {
-        alert('Failed to send message. Please try again.');
+        alert("Failed to send message. Please try again.");
+      })
+      .finally(() => {
+        setIsSending(false);
       });
   };
 
@@ -354,9 +366,37 @@ const Portfolio = () => {
                     />
                   </div>
                   <button
-                    className="px-8 py-4 bg-white text-indigo-600 rounded-full font-bold hover:bg-gray-100 transition-colors w-full md:w-auto"
+                    type="submit"
+                    className="px-8 py-4 bg-white text-indigo-600 rounded-full font-bold hover:bg-gray-100 transition-colors w-full md:w-auto flex items-center justify-center gap-2"
+                    disabled={isSending}
                   >
-                    Send Message
+                    {isSending ? (
+                      <>
+                        <svg
+                          className="animate-spin h-5 w-5 text-indigo-600"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 018 8z"
+                          />
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      "Send Message"
+                    )}
                   </button>
                 </form>
               </div>
