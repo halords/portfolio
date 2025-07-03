@@ -57,7 +57,7 @@ const Portfolio = () => {
       title: "Customer Feedback Management System",
       description: "A full-stack management system for consolidation of online and offline reports.",
       tags: ["VanillaJS", "Node", "Firebase"],
-      image: "/images/feedback.PNG",
+      image: "/images/feedback.png",
       link: "https://fir-7db1b.web.app/",
       github: "https://github.com/halords/feedback"
     },
@@ -66,7 +66,7 @@ const Portfolio = () => {
       title: "Employee Character Reference Survey",
       description: "A full-stack system for managing character reference survey results of newly appointed and hired employees.",
       tags: ["React", "Vite", "TailwindCSS", "MySQL"],
-      image: "/images/bg.PNG",
+      image: "/images/bg.png",
       link: "https://bg-survey-yv9o.vercel.app/",
       github: "https://github.com/halords/bg-survey"
     }
@@ -286,7 +286,7 @@ const Portfolio = () => {
             >
               <div className="flex flex-col md:flex-row gap-8 w-full">
                 <div className="w-full md:w-1/3">
-                  <div className="bg-gradient-to-r from-indigo-400 to-cyan-400 aspect-square rounded-xl w-full"><img src="/images/profile.JPG" /></div>
+                  <div className="bg-gradient-to-r from-indigo-400 to-cyan-400 aspect-square rounded-xl w-full"><img src="/images/profile.jpg" /></div>
                 </div>
                 <div className="w-full md:w-2/3">
                   <h3 className="text-2xl font-bold mb-4">Hi, I'm Harold</h3>
