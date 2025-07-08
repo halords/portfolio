@@ -16,28 +16,44 @@ const Portfolio = () => {
   const contactRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const sectionIds = ['home', 'work', 'about', 'contact'];
-    const sections = sectionIds
-      .map(id => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
+  const sections = [
+    { id: 'home', ref: homeRef },
+    { id: 'work', ref: workRef },
+    { id: 'about', ref: aboutRef },
+    { id: 'contact', ref: contactRef },
+  ];
 
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.6, // Adjust for sensitivity
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sectionId = sections.find(sec => sec.ref.current === entry.target)?.id;
+        if (sectionId) {
+          setActiveSection(sectionId);
+        }
       }
-    );
+    });
+  }, observerOptions);
 
-    sections.forEach(section => observer.observe(section));
+  sections.forEach(section => {
+    if (section.ref.current) {
+      observer.observe(section.ref.current);
+    }
+  });
 
-    return () => {
-      sections.forEach(section => observer.unobserve(section));
-    };
-  }, []);
-
+  return () => {
+    sections.forEach(section => {
+      if (section.ref.current) {
+        observer.unobserve(section.ref.current);
+      }
+    });
+  };
+}, []);
 
   const links = [
     {
@@ -144,7 +160,7 @@ const Portfolio = () => {
                 {item}
                 {activeSection === item && (
                   <motion.span 
-                    layoutId="underline"
+                    // layoutId="underline"
                     className="absolute left-0 bottom-0 w-full h-0.5 bg-indigo-600"
                   />
                 )}
@@ -191,7 +207,6 @@ const Portfolio = () => {
         {/* Hero Section */}
         <section 
           ref={homeRef}
-          id ="home"
           className="min-h-screen flex items-center justify-center px-6 w-full"
         >
           <div className="w-full max-w-7xl mx-auto text-left">
@@ -226,7 +241,6 @@ const Portfolio = () => {
         {/* Work Section */}
         <section 
           ref={workRef}
-          id="work"
           className="min-h-screen py-20 px-6 w-full"
         >
           <div className="w-full max-w-7xl mx-auto">
@@ -290,7 +304,6 @@ const Portfolio = () => {
         {/* About Section */}
         <section 
           ref={aboutRef}
-          id="about"
           className="min-h-screen py-20 px-6 bg-gray-100 w-full"
         >
           <div className="w-full max-w-7xl mx-auto">
@@ -352,7 +365,6 @@ const Portfolio = () => {
         {/* Contact Section */}
         <section 
           ref={contactRef}
-          id="contact"
           className="min-h-screen py-20 px-6 flex items-center justify-center w-full"
         >
           <div className="w-full max-w-7xl mx-auto">
