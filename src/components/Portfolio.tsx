@@ -1,5 +1,5 @@
 // src/components/Portfolio.tsx
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from 'emailjs-com';
 
@@ -14,6 +14,46 @@ const Portfolio = () => {
   const workRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+  const sections = [
+    { id: 'home', ref: homeRef },
+    { id: 'work', ref: workRef },
+    { id: 'about', ref: aboutRef },
+    { id: 'contact', ref: contactRef },
+  ];
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.6, // Adjust for sensitivity
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sectionId = sections.find(sec => sec.ref.current === entry.target)?.id;
+        if (sectionId) {
+          setActiveSection(sectionId);
+        }
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    if (section.ref.current) {
+      observer.observe(section.ref.current);
+    }
+  });
+
+  return () => {
+    sections.forEach(section => {
+      if (section.ref.current) {
+        observer.unobserve(section.ref.current);
+      }
+    });
+  };
+}, []);
 
   const links = [
     {
