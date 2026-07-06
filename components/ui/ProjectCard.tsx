@@ -63,7 +63,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </h3>
 
         {/* Description */}
-        <p className="text-[15px] text-ink-soft leading-relaxed mb-5">
+        <p className="text-[15px] text-ink-soft leading-relaxed mb-5 text-justify">
           {project.description}
         </p>
 

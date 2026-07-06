@@ -76,7 +76,7 @@ export function Hero() {
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
-              className="text-[15.5px] text-ink-soft leading-relaxed mb-8 max-w-lg"
+              className="text-[15.5px] text-ink-soft leading-relaxed mb-8 max-w-lg text-justify"
             >
               {person.bio[0]}
             </motion.p>
@@ -147,7 +147,7 @@ export function Hero() {
                   <Tag text="Citizen's Charter" variant="sage" />
                   <Tag text="Next.js" variant="gold" />
                   <Tag text="Full-Stack Dev" variant="gold" />
-                  <Tag text="La Union, PH" variant="sage" />
+                  <Tag text="City of San Fernando, La Union" variant="sage" />
                 </div>
               </div>
             </div>

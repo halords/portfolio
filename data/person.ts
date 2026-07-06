@@ -4,7 +4,7 @@ export const person = {
   lastName: "Jamora",
   title: "Administrative Officer II",
   org: "Provincial Government of La Union",
-  location: "Las-Ud, Caba, La Union, Region I",
+  location: "City of San Fernando, La Union",
   email: "haroldjamora08@gmail.com",
   phone: "09756343810",
   phoneFormatted: "0975 634 3810",

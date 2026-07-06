@@ -78,7 +78,7 @@ export function Contact() {
                 Open to the right{" "}
                 <em className="text-sage-mid italic">opportunity</em>.
               </h2>
-              <p className="text-[15.5px] text-white/50 max-w-md mx-auto">
+              <p className="text-[15.5px] text-white/50 max-w-md mx-auto text-justify">
                 Whether you have a project in mind, a question about my work, or
                 an opportunity to discuss — I&apos;d love to hear from you.
               </p>

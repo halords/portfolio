@@ -34,7 +34,7 @@ export function About() {
               {person.bio.map((paragraph, i) => (
                 <p
                   key={i}
-                  className="text-[15.5px] text-ink-soft leading-relaxed"
+                  className="text-[15.5px] text-ink-soft leading-relaxed text-justify"
                 >
                   {paragraph}
                 </p>

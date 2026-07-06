@@ -64,7 +64,7 @@ export function TimelineItem({ entry, index, isLast }: TimelineItemProps) {
         )}
 
         {/* Description */}
-        <p className="text-[15px] text-ink-soft leading-relaxed mb-4">
+        <p className="text-[15px] text-ink-soft leading-relaxed mb-4 text-justify">
           {entry.description}
         </p>
 
