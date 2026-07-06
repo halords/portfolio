@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* ─── Design System Tokens ─── */
+:root {
+  --ink: #1a1f2e;
+  --ink-soft: #3d4460;
+  --ink-muted: #7c84a0;
+  --sage: #4a7c6f;
+  --sage-light: #e8f0ee;
+  --sage-mid: #c2d8d2;
+  --gold: #b5863a;
+  --gold-light: #f5edd8;
+  --surface: #f7f6f3;
+  --white: #ffffff;
+  --border: rgba(26, 31, 46, 0.1);
+  --border-mid: rgba(26, 31, 46, 0.18);
+}
+
+/* ─── Tailwind v4 Theme ─── */
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-muted: var(--ink-muted);
+  --color-sage: var(--sage);
+  --color-sage-light: var(--sage-light);
+  --color-sage-mid: var(--sage-mid);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-surface: var(--surface);
+  --color-border-custom: var(--border);
+  --color-border-mid: var(--border-mid);
+
+  --font-serif: var(--font-dm-serif);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+}
+
+/* ─── Base Resets ─── */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-inter), "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink-muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-soft);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background-color: var(--sage-light);
+  color: var(--ink);
+}
+
+/* ─── Section Container ─── */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ─── Section Padding ─── */
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* ─── Scrollbar Hide Utility ─── */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

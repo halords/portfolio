@@ -1,0 +1,21 @@
+export const person = {
+  name: "Harold Erick M. Jamora",
+  firstName: "Harold Erick",
+  lastName: "Jamora",
+  title: "Administrative Officer II",
+  org: "Provincial Government of La Union",
+  location: "Las-Ud, Caba, La Union, Region I",
+  email: "haroldjamora08@gmail.com",
+  phone: "09756343810",
+  phoneFormatted: "0975 634 3810",
+  resumeLink: "http://haroldjamora.jobs180.com",
+  tagline: "Public servant by day, builder by night.",
+  bio: [
+    "I started my career in clerical and administrative support at the Department of Agriculture and DENR Region I, where I learned the fundamentals of government processes, records management, and regulatory compliance from the ground up.",
+    "Over the years, I moved into systems and information management roles at the Provincial Government of La Union — handling ISO 9001:2015 QMS documentation, Citizen's Charter compliance, stakeholder coordination, and performance reporting across multiple offices. In 2022, I was recognized as one of the Ten Outstanding Provincial Public Servants.",
+    "Alongside all of that, I taught myself to build full-stack web applications using Next.js, React, PostgreSQL, and Prisma. I've shipped seven internal systems — from discipline tracking and feedback management to leave trackers and AI-powered form builders — each one designed to solve a real workflow problem inside our provincial government.",
+  ],
+  yearsOfService: 8,
+  systemsBuilt: 7,
+  rolesHeld: 4,
+};
