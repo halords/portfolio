@@ -12,6 +12,17 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "drrrf",
+    icon: "📄",
+    iconVariant: "sage",
+    type: "Document Management · Routing",
+    title: "Document Revision Request System (DRRS)",
+    description:
+      "A robust, role-based document management and routing system built to streamline the process of ISO Procedures revision. Digitizes the workflow for proposing, reviewing, and approving document revisions with automated routing and real-time updates.",
+    tech: ["Next.js", "Prisma", "Tailwind CSS", "SWR", "NextAuth.js"],
+    featured: true,
+  },
+  {
     id: "pdr",
     icon: "📊",
     iconVariant: "sage",
@@ -74,7 +85,7 @@ export const projects: Project[] = [
     title: "L&D Form Builder",
     description:
       "Dynamic form builder for Learning & Development assessments. Features AI-generated questions, real-time collaboration via Pusher, and analytics dashboards with Recharts.",
-    tech: ["Next.js", "Gemini AI", "Pusher", "Recharts", "Puppeteer"],
+    tech: ["Next.js", "Ollama Cloud", "Pusher", "Recharts", "Puppeteer", "Turso/libSQL", "NextAuth"],
   },
   {
     id: "ambagan",
@@ -84,7 +95,7 @@ export const projects: Project[] = [
     title: "Ambagan – Travel Expense Splitter",
     description:
       "Collaborative travel expense splitting app built as a monorepo. Simplifies group travel accounting with real-time calculations and shareable expense reports.",
-    tech: ["Next.js", "Turborepo", "pnpm monorepo", "TypeScript"],
+    tech: ["Next.js", "Turborepo", "pnpm monorepo", "TypeScript", "Ollama Cloud", "React Native", "Expo", "Android", "Web", "Google OAuth"],
     featured: true,
   },
   {
@@ -103,6 +114,5 @@ export const projects: Project[] = [
       "Zustand",
       "Tailwind CSS v4",
     ],
-    wide: true,
   },
 ];
