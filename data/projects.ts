@@ -21,7 +21,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "drrrf",
-    image: "/projects/drrrf.png",
+    image: "/projects/drrrf.svg",
     type: "Document Management · Routing",
     title: "Document Revision Request System",
     description:
@@ -40,7 +40,7 @@ export const projects: Project[] = [
   },
   {
     id: "pdr",
-    image: "/projects/pdr.png",
+    image: "/projects/pdr.svg",
     type: "Attendance · Reporting · Automation",
     title: "Personnel Discipline Report System",
     description:
@@ -64,7 +64,7 @@ export const projects: Project[] = [
   },
   {
     id: "feedback",
-    image: "/projects/feedback.png",
+    image: "/projects/feedback.svg",
     type: "Feedback · AI · Analytics",
     title: "AI-Powered Customer Feedback System",
     description:
@@ -84,7 +84,7 @@ export const projects: Project[] = [
   },
   {
     id: "cc",
-    image: "/projects/cc.png",
+    image: "/projects/cc.svg",
     type: "Public-Facing · Civic Tech",
     title: "PGLU Citizen's Charter Portal",
     description:
@@ -109,7 +109,7 @@ export const projects: Project[] = [
   },
   {
     id: "leave",
-    image: "/projects/leave.png",
+    image: "/projects/leave.svg",
     type: "HR · Leave Management",
     title: "Leave Tracker",
     description:
@@ -128,7 +128,7 @@ export const projects: Project[] = [
   },
   {
     id: "ld",
-    image: "/projects/ld.png",
+    image: "/projects/ld.svg",
     type: "Training · Analytics",
     title: "L&D Form Builder",
     description:
@@ -146,7 +146,7 @@ export const projects: Project[] = [
   },
   {
     id: "ambagan",
-    image: "/projects/ambagan.png",
+    image: "/projects/ambagan.svg",
     type: "Finance · Travel · Mobile",
     title: "Ambagan — Travel Expense Splitter",
     description:
@@ -165,7 +165,7 @@ export const projects: Project[] = [
   },
   {
     id: "doceditor",
-    image: "/projects/doceditor.png",
+    image: "/projects/doceditor.svg",
     type: "Document Editor · Canvas",
     title: "Template-Based Document Editor",
     description:
