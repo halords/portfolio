@@ -44,13 +44,13 @@ export const projects: Project[] = [
     type: "Feedback · AI · Analytics",
     title: "AI-Powered Customer Feedback System",
     description:
-      "Feedback collection plus automatic sentiment classification and trend detection — thousands of citizen responses analyzed by AI instead of read one by one.",
+      "In production use at the Provincial Government of La Union — citizen feedback is collected, AI-classified for sentiment, and trended automatically instead of being read and tallied by hand.",
     problem:
-      "Citizen feedback arrived as paper forms and online submissions. Reading and categorizing them manually meant insights arrived months late — or never.",
+      "Citizen feedback arrived as paper forms and online submissions. Reading and categorizing everything manually meant insights arrived months late — or never.",
     solution:
       "A unified collection platform with an AI pipeline: Ollama Claude classifies sentiment and detects trends, with Gemini as fallback. Role-based dashboards surface what's actually going wrong, while it's still fixable.",
     outcomes: [
-      "Automated sentiment classification across all feedback channels",
+      "Running in the workplace — real citizen feedback, analyzed daily",
       "Trend detection flags recurring service issues early",
       "Role-based access keeps raw responses visible only to authorized staff",
     ],
@@ -64,15 +64,15 @@ export const projects: Project[] = [
     type: "Public-Facing · Civic Tech",
     title: "PGLU Citizen's Charter Portal",
     description:
-      "The province's Citizen's Charter as a fast public web portal — every government service, its requirements, and processing times, accessible to any citizen with a phone.",
+      "Used in the workplace to streamline Citizen's Charter generation, revision, and compliance — and citizens can now access services interactively instead of visiting offices blind.",
     problem:
-      "The Citizen's Charter existed as printed documents inside offices. Citizens couldn't check requirements or processing times before visiting — leading to wasted trips and long queues.",
+      "Producing and revising the Citizen's Charter was a manual, document-heavy process, and staying compliant meant constant re-checking. Citizens had no way to interact with services before visiting in person.",
     solution:
-      "A public Next.js portal publishing every service's requirements, fees, and processing times, generated from structured data with Puppeteer-rendered printable versions. Built as a Turborepo monorepo for shared components.",
+      "A structured-data platform: charter content is authored once, then generated into a public portal and Puppeteer-rendered printable versions. Revision workflows keep everything compliant, and clients access services interactively, 24/7.",
     outcomes: [
-      "Charter information accessible 24/7 from any device",
-      "Printable service guides generated directly from the same data",
-      "Fewer incomplete applications and repeat office visits",
+      "Charter generation and revision centralized in one system",
+      "Compliance tracking built into the workflow",
+      "Interactive client access — fewer wasted office visits",
     ],
     tech: [
       "Next.js 15",
@@ -89,14 +89,14 @@ export const projects: Project[] = [
     type: "HR · Leave Management",
     title: "Leave Tracker",
     description:
-      "Leave requests, approval workflows, balance tracking, and government-form PDF generation — one system replacing the paper leave forms circulating between departments.",
+      "My daily driver for leave management — applications, approvals, and leave credit balances in one place, with official-form PDFs generated on the spot.",
     problem:
-      "Leave applications moved on paper: employees filled forms by hand, supervisors signed, HR re-encoded everything. Balances lived in someone's spreadsheet.",
+      "Leave applications moved on paper: forms filled by hand, supervisors signed, HR re-encoded everything. Balances lived in someone's spreadsheet — always out of date.",
     solution:
-      "Digital leave requests with multi-level approval workflows, automatic balance computation, and one-click PDF generation of the official leave form via pdf-lib. Backed by Turso/libSQL with Prisma.",
+      "Digital leave requests with multi-level approval workflows, automatic balance computation, and one-click PDF generation of the official leave form via pdf-lib. Backed by Turso/libSQL with Prisma. I open it daily.",
     outcomes: [
-      "End-to-end digital leave workflow — request to approval to PDF",
-      "Automatic balance tracking eliminates spreadsheet reconciliation",
+      "Used daily — real leave applications and credit tracking",
+      "Balances always current, no spreadsheet reconciliation",
       "Official-form PDFs generated directly from approved requests",
     ],
     tech: ["Next.js", "Turso/libSQL", "Prisma", "pdf-lib", "NextAuth"],
@@ -142,18 +142,18 @@ export const projects: Project[] = [
   {
     id: "doceditor",
     image: "/projects/doceditor.svg",
-    type: "Document Editor · Canvas",
-    title: "Template-Based Document Editor",
+    type: "Documents · Search · Cloud",
+    title: "NexusDocs — Personal Document Cloud",
     description:
-      "Visual document composition with reusable templates — drag-and-drop canvas editing (Konva.js) combined with rich text (Tiptap), so repeat documents start from a template instead of a blank page.",
+      "My daily document hub — I create, search, and print my documents from anywhere with internet. No more opening Word files and scrolling through pages to find things.",
     problem:
-      "Recurring office documents were rebuilt from scratch every time in Word — inconsistent formatting, no templates, no structure.",
+      "Documents lived scattered across Word files. Finding anything meant opening file after file and scrolling — and printing required being at the right computer.",
     solution:
-      "A canvas-based editor pairing Konva.js visual editing with Tiptap rich text. Templates define the structure; users drag, drop, and fill. State managed with Zustand, persisted to Turso/libSQL.",
+      "A personal document cloud: rich-text editing with Tiptap, canvas-based template composition with Konva.js, full-text search across everything I've created, and printing from any device. State managed with Zustand, persisted to Turso/libSQL.",
     outcomes: [
-      "Reusable templates enforce consistent document structure",
-      "Visual drag-and-drop editing — no design skills required",
-      "Structured storage makes documents searchable and reusable",
+      "Used daily — search replaces scrolling through Word files",
+      "Create and print documents from anywhere with internet",
+      "Templates keep recurring documents consistent",
     ],
     tech: [
       "Next.js 16",
