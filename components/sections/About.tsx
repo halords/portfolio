@@ -24,17 +24,18 @@ export function About() {
               className="font-serif text-ink mb-3"
               style={{ fontSize: "clamp(26px, 3.5vw, 38px)" }}
             >
-              Bridging governance and technology
+              A developer who understands operations
             </h2>
             <p className="text-[14px] text-ink-muted mb-8">
-              A unique path from public administration to full-stack development
-            </p>
+              Eight years inside government administration, seven production
+              systems shipped — I build software for the workflows most
+              developers never see.</p>
 
             <div className="space-y-5 mb-8">
               {person.bio.map((paragraph, i) => (
                 <p
                   key={i}
-                  className="text-[15.5px] text-ink-soft leading-relaxed text-justify"
+                  className="text-[15.5px] text-ink-soft leading-relaxed text-left"
                 >
                   {paragraph}
                 </p>
