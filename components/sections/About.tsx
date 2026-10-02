@@ -27,9 +27,9 @@ export function About() {
               A developer who understands operations
             </h2>
             <p className="text-[14px] text-ink-muted mb-8">
-              Eight years inside government administration, seven production
-              systems shipped — I build software for the workflows most
-              developers never see.</p>
+              Eight years inside government administration, eight projects
+              shipped — I build software for the workflows most developers
+              never see.</p>
 
             <div className="space-y-5 mb-8">
               {person.bio.map((paragraph, i) => (

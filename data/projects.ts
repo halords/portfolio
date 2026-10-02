@@ -39,30 +39,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: "pdr",
-    image: "/projects/pdr.svg",
-    type: "Attendance · Reporting · Automation",
-    title: "Personnel Discipline Report System",
-    description:
-      "Turned a manual attendance-tracking and discipline-reporting chore into an automated pipeline — pulls raw data from Google Sheets and produces compliance-ready Excel reports in one click.",
-    problem:
-      "Monthly discipline reports were assembled by hand: copying attendance data between spreadsheets, formatting it, and re-checking formulas. Slow, error-prone, and repeated every single month.",
-    solution:
-      "Automated ingestion from Google Sheets API v4, server-side report assembly with ExcelJS, and one-click downloads of formatted compliance reports. Integrated with internal PGLU APIs so the data flows without re-typing.",
-    outcomes: [
-      "Monthly reporting reduced from days of manual assembly to minutes",
-      "Eliminated copy-paste errors between source data and final reports",
-      "Consistent, audit-ready formatting every cycle",
-    ],
-    tech: [
-      "Next.js 15",
-      "Google Sheets API v4",
-      "ExcelJS",
-      "PGLU Internal APIs",
-      "Framer Motion",
-    ],
-  },
-  {
     id: "feedback",
     image: "/projects/feedback.svg",
     type: "Feedback · AI · Analytics",
@@ -187,5 +163,62 @@ export const projects: Project[] = [
       "Zustand",
       "Tailwind CSS v4",
     ],
+  },
+  {
+    id: "certgen",
+    image: "/projects/certgen.svg",
+    type: "Document Automation · Bulk PDF",
+    title: "CertGen — Bulk Certificate Generator",
+    description:
+      "Design a certificate template once on a canvas, upload a CSV of names, and download hundreds of print-ready PDF certificates in one zip — entirely in the browser, no server needed.",
+    problem:
+      "Training programs and seminars needed hundreds of personalized certificates. Laying out each one by hand took days and introduced typos in people's names.",
+    solution:
+      "A 3-step browser wizard: draw field placeholders on a canvas template with Fabric.js, upload recipient data via CSV, then bulk-render print-ready PDFs with jsPDF and bundle them into a zip. Live on GitHub Pages at zero hosting cost.",
+    outcomes: [
+      "Hundreds of personalized certificates generated in minutes",
+      "Zero server cost — everything runs client-side",
+      "Reusable templates for recurring trainings and events",
+    ],
+    tech: [
+      "React 19",
+      "Vite",
+      "Fabric.js",
+      "jsPDF",
+      "JSZip",
+      "PapaParse",
+      "Zustand",
+      "Tailwind CSS",
+    ],
+    featured: true,
+    liveUrl: "https://halords.github.io/certificate-generator",
+    repoUrl: "https://github.com/halords/certificate-generator",
+  },
+  {
+    id: "taskflow",
+    image: "/projects/taskflow.svg",
+    type: "Team Productivity · Real-time",
+    title: "TaskFlow — Team Task Management",
+    description:
+      "Full-stack task management with role-based access, real-time updates, proof-of-completion verification via photo uploads, deadline alerts, and a complete audit trail.",
+    problem:
+      "Coordinating team tasks over chat threads meant missed deadlines, no accountability, and no verifiable record of what was actually completed.",
+    solution:
+      "Next.js 14 on Supabase: role-based access with row-level security, PostgreSQL change-data-capture for live updates, Supabase Storage for verification photo uploads, Vercel Cron for deadline alerts, and full activity logging.",
+    outcomes: [
+      "Role-based workflows enforced by row-level security",
+      "Real-time task status and notification alerts",
+      "Photo/link verification trail for every completed task",
+      "Automated deadline reminders via scheduled cron",
+    ],
+    tech: [
+      "Next.js 14",
+      "Supabase",
+      "PostgreSQL",
+      "Zustand",
+      "Framer Motion",
+      "Tailwind CSS",
+    ],
+    repoUrl: "https://github.com/halords/task-management",
   },
 ];
