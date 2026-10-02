@@ -17,12 +17,12 @@ export function ValueBar() {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="bg-white border-y border-[var(--border)] overflow-hidden"
+      className="bg-white border-y border-[var(--border)]"
     >
-      <div className="section-container py-3">
-        <div className="flex overflow-x-auto gap-x-8 scrollbar-hide lg:justify-between" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+      <div className="section-container py-5">
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
           {values.map((value) => (
-            <div key={value} className="flex items-center gap-2.5 shrink-0">
+            <div key={value} className="flex items-center gap-2.5">
               <div className="w-2 h-2 rounded-full bg-sage shrink-0" />
               <span className="text-[15px] font-medium text-ink-soft whitespace-nowrap">
                 {value}

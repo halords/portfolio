@@ -6,6 +6,7 @@ import { ChevronDown } from "lucide-react";
 import { career } from "@/data/career";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { TimelineItem } from "@/components/ui/TimelineItem";
+import { Certifications } from "@/components/sections/Certifications";
 
 export function Career() {
   const [expanded, setExpanded] = useState(false);
@@ -78,6 +79,8 @@ export function Career() {
               />
             </button>
           </div>
+
+          <Certifications />
         </div>
       </div>
     </section>

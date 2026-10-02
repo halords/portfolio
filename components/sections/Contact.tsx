@@ -51,7 +51,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="section-padding">
+    <section id="contact" className="section-padding" style={{ paddingBottom: "6rem" }}>
       <div className="section-container">
         <div
           className="relative rounded-[20px] overflow-hidden px-6 py-16 md:px-12 md:py-20"
