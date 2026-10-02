@@ -3,6 +3,7 @@
 /* ─── Design System Tokens ─── */
 :root {
   --ink: #1a1f2e;
+  --ink-deep: #12151f;
   --ink-soft: #3d4460;
   --ink-muted: #7c84a0;
   --sage: #4a7c6f;
@@ -19,6 +20,7 @@
 /* ─── Tailwind v4 Theme ─── */
 @theme inline {
   --color-ink: var(--ink);
+  --color-ink-deep: var(--ink-deep);
   --color-ink-soft: var(--ink-soft);
   --color-ink-muted: var(--ink-muted);
   --color-sage: var(--sage);
@@ -69,8 +71,8 @@ body {
 
 /* ─── Selection ─── */
 ::selection {
-  background-color: var(--sage-light);
-  color: var(--ink);
+  background-color: var(--gold);
+  color: #fff;
 }
 
 /* ─── Section Container ─── */
@@ -82,11 +84,28 @@ body {
 
 /* ─── Section Padding ─── */
 .section-padding {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
 }
 
 /* ─── Scrollbar Hide Utility ─── */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* ─── Brand: shipped-systems ticker ─── */
+@keyframes halords-ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  animation: halords-ticker 38s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ticker {
+    animation: none;
+  }
 }

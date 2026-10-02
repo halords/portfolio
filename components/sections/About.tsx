@@ -19,7 +19,7 @@ export function About() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.2 }}
           >
-            <SectionLabel text="About" />
+            <SectionLabel text="About" index="01" />
             <h2
               className="font-serif text-ink mb-3"
               style={{ fontSize: "clamp(26px, 3.5vw, 38px)" }}
@@ -27,9 +27,9 @@ export function About() {
               A developer who understands operations
             </h2>
             <p className="text-[14px] text-ink-muted mb-8">
-              Eight years inside government administration, seven production
-              systems shipped — I build software for the workflows most
-              developers never see.</p>
+              Eight years inside government administration, seven projects
+              shipped — I build software for the workflows most developers
+              never see.</p>
 
             <div className="space-y-5 mb-8">
               {person.bio.map((paragraph, i) => (

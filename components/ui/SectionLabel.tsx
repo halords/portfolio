@@ -2,11 +2,17 @@
 
 interface SectionLabelProps {
   text: string;
+  index?: string;
 }
 
-export function SectionLabel({ text }: SectionLabelProps) {
+export function SectionLabel({ text, index }: SectionLabelProps) {
   return (
     <div className="flex items-center gap-3 mb-6">
+      {index && (
+        <span className="font-mono text-[11px] font-medium tracking-[0.15em] text-gold">
+          {index}
+        </span>
+      )}
       <div className="w-8 h-[1px] bg-sage" />
       <span className="font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-sage">
         {text}

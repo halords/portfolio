@@ -3,154 +3,152 @@
 import { motion, type Variants } from "framer-motion";
 import { ArrowDown, Mail } from "lucide-react";
 import { person } from "@/data/person";
-import { StatBox } from "@/components/ui/StatBox";
-import { Tag } from "@/components/ui/Tag";
 
 const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 28 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" as const },
+    transition: { delay: 0.15 + i * 0.12, duration: 0.7, ease: "easeOut" as const },
   }),
 };
 
-const slideInRight: Variants = {
-  hidden: { opacity: 0, x: 60 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { delay: 0.3, duration: 0.7, ease: "easeOut" as const },
-  },
-};
+const systems = [
+  "feedback v3",
+  "citizen's charter web",
+  "nexusdocs",
+  "iam console",
+  "leave tracker",
+  "ambagan",
+  "l&d forms",
+  "printer pos",
+];
+
+const stats = [
+  { value: "8+", label: "years of service" },
+  { value: "7", label: "production systems shipped" },
+  { value: "2022", label: "outstanding public servant" },
+];
 
 export function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center pt-[60px]"
+      className="relative min-h-screen flex flex-col overflow-hidden bg-ink-deep text-surface"
     >
-      <div className="section-container w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center py-12 lg:py-0">
-          {/* Left: Text */}
-          <div>
-            <motion.div
-              custom={0}
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-              className="flex items-center gap-3 mb-6"
-            >
-              <div className="w-8 h-[1px] bg-sage" />
-              <span className="font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-sage">
-                Full-Stack Developer · {person.location}
-              </span>
-            </motion.div>
+      {/* Ambient glows */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-48 right-[-12%] h-[600px] w-[600px] rounded-full bg-sage/25 blur-[160px]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-[-25%] left-[-12%] h-[520px] w-[520px] rounded-full bg-gold/15 blur-[160px]"
+      />
+      {/* Watermark */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-28 select-none text-center font-serif leading-none text-white/[0.03]"
+        style={{ fontSize: "22vw" }}
+      >
+        halords
+      </div>
 
-            <motion.h1
-              custom={1}
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-              className="font-serif text-ink leading-[1.05] mb-5"
-              style={{ fontSize: "clamp(36px, 5vw, 56px)" }}
-            >
-              {person.firstName}{" "}
-              <em className="text-sage not-italic font-serif">
-                {person.lastName}
-              </em>
-            </motion.h1>
-
-            <motion.p
-              custom={2}
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-              className="italic text-ink-muted text-lg mb-5"
-            >
-              &ldquo;{person.tagline}&rdquo;
-            </motion.p>
-
-            <motion.p
-              custom={3}
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-              className="text-[15.5px] text-ink-soft leading-relaxed mb-8 max-w-lg"
-            >
-              {person.bio[0]}
-            </motion.p>
-
-            {/* CTA buttons */}
-            <motion.div
-              custom={4}
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-wrap gap-3"
-            >
-              <a
-                href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-sage text-white rounded-md text-[14px] font-medium hover:bg-sage/90 transition-colors"
-              >
-                View selected work
-                <ArrowDown size={16} />
-              </a>
-              <a
-                href="#services"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--border-mid)] text-ink-soft rounded-md text-[14px] font-medium hover:border-sage hover:text-sage transition-colors"
-              >
-                What I offer
-              </a>
-            </motion.div>
-          </div>
-
-          {/* Right: Identity Card */}
+      <div className="section-container relative flex flex-1 items-center pt-[60px]">
+        <div className="max-w-3xl py-24">
           <motion.div
-            variants={slideInRight}
+            custom={0}
+            variants={fadeInUp}
             initial="hidden"
             animate="visible"
-            className="relative"
+            className="mb-7 flex items-center gap-3"
           >
-            <div className="bg-white rounded-xl border border-[var(--border)] overflow-hidden shadow-sm">
-              {/* Gradient top border */}
-              <div className="h-1 bg-gradient-to-r from-sage to-gold" />
+            <div className="h-[1px] w-10 bg-gold" />
+            <span className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-sage-mid">
+              halords · full-stack developer · {person.location}
+            </span>
+          </motion.div>
 
-              <div className="p-6">
-                {/* Avatar + Name */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-full bg-sage-light flex items-center justify-center">
-                    <span className="font-serif text-xl text-sage">HJ</span>
-                  </div>
-                  <div>
-                    <div className="font-serif text-lg text-ink">
-                      {person.name}
-                    </div>
-                    <div className="font-mono text-[11px] uppercase tracking-wider text-ink-muted">
-                      {person.title}
-                    </div>
-                  </div>
-                </div>
+          <motion.h1
+            custom={1}
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="font-serif leading-[1.02] text-white"
+            style={{ fontSize: "clamp(44px, 7vw, 92px)" }}
+          >
+            I build systems that{" "}
+            <span className="text-gold">run the office.</span>
+          </motion.h1>
 
-                {/* 2×2 Stats Grid */}
-                <div className="grid grid-cols-2 gap-3 mb-6">
-                  <StatBox value="8+" label="Years experience" />
-                  <StatBox value="7" label="Systems in production" />
-                  <StatBox value="4" label="Service offerings" />
-                  <StatBox value="2022" label="Top 10 Awardee" />
-                </div>
+          <motion.p
+            custom={2}
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-6 text-lg italic text-white/55"
+          >
+            &ldquo;{person.tagline}&rdquo;
+          </motion.p>
 
-                {/* Tag row */}
-                <div className="flex flex-wrap gap-1.5">
-                  <Tag text="Next.js / React" variant="gold" />
-                  <Tag text="PostgreSQL + Prisma" variant="gold" />
-                  <Tag text="AI Integration" variant="gold" />
-                  <Tag text="Workflow Automation" variant="sage" />
-                  <Tag text="ISO 9001:2015" variant="sage" />
-                </div>
+          <motion.p
+            custom={3}
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-4 max-w-xl text-[15.5px] leading-relaxed text-white/70"
+          >
+            {person.bio[0]}
+          </motion.p>
+
+          <motion.div
+            custom={4}
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-10 flex flex-wrap gap-3"
+          >
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3 text-[14px] font-semibold text-ink-deep transition-colors hover:bg-gold/90"
+            >
+              View selected work
+              <ArrowDown size={16} />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-md border border-white/20 px-6 py-3 text-[14px] font-medium text-white/80 transition-colors hover:border-white/50 hover:text-white"
+            >
+              Get in touch
+              <Mail size={16} />
+            </a>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Stats strip */}
+      <div className="relative border-t border-white/10">
+        <div className="section-container grid grid-cols-1 gap-6 py-8 sm:grid-cols-3">
+          {stats.map((s) => (
+            <div key={s.label}>
+              <div className="font-serif text-3xl text-white">{s.value}</div>
+              <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">
+                {s.label}
               </div>
             </div>
-          </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Shipped-systems ticker */}
+      <div className="relative overflow-hidden border-t border-white/10 py-4">
+        <div className="animate-ticker flex w-max whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.28em] text-white/35">
+          {[...systems, ...systems].map((s, i) => (
+            <span key={i} className="flex items-center">
+              <span className="px-6">{s}</span>
+              <span className="text-gold/60">·</span>
+            </span>
+          ))}
         </div>
       </div>
     </section>

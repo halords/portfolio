@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Logo } from "@/components/brand/Logo";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -32,7 +33,10 @@ export function Navbar() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [mobileOpen]);
+  }, []);
+
+  // Transparent over the dark hero; frosted light once scrolled.
+  const overDark = !scrolled && !mobileOpen;
 
   return (
     <>
@@ -40,20 +44,33 @@ export function Navbar() {
         initial={{ opacity: 0, y: -4 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 h-[60px] flex items-center transition-shadow duration-300 ${
-          scrolled ? "shadow-sm" : ""
-        }`}
-        style={{
-          backgroundColor: "rgba(247, 246, 243, 0.90)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
-          borderBottom: "1px solid var(--border)",
-        }}
+        className="fixed top-0 left-0 right-0 z-50 h-[60px] flex items-center transition-all duration-300"
+        style={
+          overDark
+            ? {
+                backgroundColor: "transparent",
+                borderBottom: "1px solid transparent",
+              }
+            : {
+                backgroundColor: "rgba(247, 246, 243, 0.90)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                borderBottom: "1px solid var(--border)",
+                boxShadow: scrolled ? "0 1px 3px rgba(26,31,46,0.06)" : "none",
+              }
+        }
       >
         <div className="section-container w-full flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="font-serif text-xl text-ink hover:opacity-80 transition-opacity">
-            Harold<span className="text-sage">.</span>
+          {/* Brand */}
+          <a href="#hero" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
+            <Logo size={30} />
+            <span
+              className={`font-mono text-[19px] font-semibold tracking-tight ${
+                overDark ? "text-white" : "text-ink"
+              }`}
+            >
+              halords<span className="text-gold">.</span>
+            </span>
           </a>
 
           {/* Desktop links */}
@@ -62,7 +79,11 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[14px] text-ink-soft hover:text-sage transition-colors duration-200"
+                className={`text-[14px] transition-colors duration-200 ${
+                  overDark
+                    ? "text-white/70 hover:text-white"
+                    : "text-ink-soft hover:text-sage"
+                }`}
               >
                 {link.label}
               </a>
@@ -72,7 +93,11 @@ export function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-ink-soft hover:text-ink transition-colors"
+            className={`md:hidden p-2 transition-colors ${
+              overDark
+                ? "text-white/80 hover:text-white"
+                : "text-ink-soft hover:text-ink"
+            }`}
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}

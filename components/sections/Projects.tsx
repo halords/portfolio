@@ -20,7 +20,7 @@ export function Projects() {
           viewport={{ once: true, amount: 0.2 }}
           className="mb-12"
         >
-          <SectionLabel text="Selected work" />
+          <SectionLabel text="Selected work" index="03" />
           <h2
             className="font-serif text-ink mb-3"
             style={{ fontSize: "clamp(26px, 3.5vw, 38px)" }}
