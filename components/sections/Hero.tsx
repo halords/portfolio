@@ -24,6 +24,14 @@ const systems = [
   "printer pos",
 ];
 
+const values = [
+  "Policy-aware builder",
+  "ISO 9001 certified process",
+  "Full-stack Next.js developer",
+  "AI-integrated systems",
+  "End-user focused design",
+];
+
 const stats = [
   { value: "8+", label: "years of service" },
   { value: "7", label: "production systems shipped" },
@@ -122,6 +130,25 @@ export function Hero() {
               Get in touch
               <Mail size={16} />
             </a>
+          </motion.div>
+
+          {/* Value props — integrated into the hero */}
+          <motion.div
+            custom={5}
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/10 pt-8"
+          >
+            {values.map((v) => (
+              <span
+                key={v}
+                className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-white/50"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                {v}
+              </span>
+            ))}
           </motion.div>
         </div>
       </div>

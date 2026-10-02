@@ -49,6 +49,11 @@ body {
   font-family: var(--font-inter), "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  hyphens: auto;
+}
+
+p {
+  text-align: justify;
 }
 
 /* ─── Scrollbar ─── */
