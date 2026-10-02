@@ -141,7 +141,8 @@ export const projects: Project[] = [
   },
   {
     id: "doceditor",
-    image: "/projects/doceditor.svg",
+    image: "/projects/nexusdocs.svg",
+    liveUrl: "https://web-editor-phi.vercel.app",
     type: "Documents · Search · Cloud",
     title: "NexusDocs — Personal Document Cloud",
     description:
