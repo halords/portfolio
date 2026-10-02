@@ -42,7 +42,7 @@ export const projects: Project[] = [
     id: "feedback",
     image: "/projects/feedback.svg",
     type: "Feedback · AI · Analytics",
-    title: "AI-Powered Customer Feedback System",
+    title: "feedbackV3 — AI Customer Feedback System",
     description:
       "In production use at the Provincial Government of La Union — citizen feedback is collected, AI-classified for sentiment, and trended automatically instead of being read and tallied by hand.",
     problem:
@@ -50,13 +50,12 @@ export const projects: Project[] = [
     solution:
       "A unified collection platform with an AI pipeline: Ollama Claude classifies sentiment and detects trends, with Gemini as fallback. Role-based dashboards surface what's actually going wrong, while it's still fixable.",
     outcomes: [
-      "Running in the workplace — real citizen feedback, analyzed daily",
+      "Running in the workplace on real citizen feedback",
       "Trend detection flags recurring service issues early",
       "Role-based access keeps raw responses visible only to authorized staff",
     ],
     tech: ["Next.js", "Ollama Claude", "Gemini AI", "PostgreSQL", "Prisma", "NextAuth"],
     featured: true,
-    repoUrl: "https://github.com/halords/feedback",
   },
   {
     id: "cc",
