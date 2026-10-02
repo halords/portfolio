@@ -39,42 +39,18 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: "pdr",
-    image: "/projects/pdr.svg",
-    type: "Attendance · Reporting · Automation",
-    title: "Personnel Discipline Report System",
-    description:
-      "Turned a manual attendance-tracking and discipline-reporting chore into an automated pipeline — pulls raw data from Google Sheets and produces compliance-ready Excel reports in one click.",
-    problem:
-      "Monthly discipline reports were assembled by hand: copying attendance data between spreadsheets, formatting it, and re-checking formulas. Slow, error-prone, and repeated every single month.",
-    solution:
-      "Automated ingestion from Google Sheets API v4, server-side report assembly with ExcelJS, and one-click downloads of formatted compliance reports. Integrated with internal PGLU APIs so the data flows without re-typing.",
-    outcomes: [
-      "Monthly reporting reduced from days of manual assembly to minutes",
-      "Eliminated copy-paste errors between source data and final reports",
-      "Consistent, audit-ready formatting every cycle",
-    ],
-    tech: [
-      "Next.js 15",
-      "Google Sheets API v4",
-      "ExcelJS",
-      "PGLU Internal APIs",
-      "Framer Motion",
-    ],
-  },
-  {
     id: "feedback",
     image: "/projects/feedback.svg",
     type: "Feedback · AI · Analytics",
     title: "AI-Powered Customer Feedback System",
     description:
-      "Feedback collection plus automatic sentiment classification and trend detection — thousands of citizen responses analyzed by AI instead of read one by one.",
+      "In production use at the Provincial Government of La Union — citizen feedback is collected, AI-classified for sentiment, and trended automatically instead of being read and tallied by hand.",
     problem:
-      "Citizen feedback arrived as paper forms and online submissions. Reading and categorizing them manually meant insights arrived months late — or never.",
+      "Citizen feedback arrived as paper forms and online submissions. Reading and categorizing everything manually meant insights arrived months late — or never.",
     solution:
       "A unified collection platform with an AI pipeline: Ollama Claude classifies sentiment and detects trends, with Gemini as fallback. Role-based dashboards surface what's actually going wrong, while it's still fixable.",
     outcomes: [
-      "Automated sentiment classification across all feedback channels",
+      "Running in the workplace — real citizen feedback, analyzed daily",
       "Trend detection flags recurring service issues early",
       "Role-based access keeps raw responses visible only to authorized staff",
     ],
@@ -88,15 +64,15 @@ export const projects: Project[] = [
     type: "Public-Facing · Civic Tech",
     title: "PGLU Citizen's Charter Portal",
     description:
-      "The province's Citizen's Charter as a fast public web portal — every government service, its requirements, and processing times, accessible to any citizen with a phone.",
+      "Used in the workplace to streamline Citizen's Charter generation, revision, and compliance — and citizens can now access services interactively instead of visiting offices blind.",
     problem:
-      "The Citizen's Charter existed as printed documents inside offices. Citizens couldn't check requirements or processing times before visiting — leading to wasted trips and long queues.",
+      "Producing and revising the Citizen's Charter was a manual, document-heavy process, and staying compliant meant constant re-checking. Citizens had no way to interact with services before visiting in person.",
     solution:
-      "A public Next.js portal publishing every service's requirements, fees, and processing times, generated from structured data with Puppeteer-rendered printable versions. Built as a Turborepo monorepo for shared components.",
+      "A structured-data platform: charter content is authored once, then generated into a public portal and Puppeteer-rendered printable versions. Revision workflows keep everything compliant, and clients access services interactively, 24/7.",
     outcomes: [
-      "Charter information accessible 24/7 from any device",
-      "Printable service guides generated directly from the same data",
-      "Fewer incomplete applications and repeat office visits",
+      "Charter generation and revision centralized in one system",
+      "Compliance tracking built into the workflow",
+      "Interactive client access — fewer wasted office visits",
     ],
     tech: [
       "Next.js 15",
@@ -109,40 +85,42 @@ export const projects: Project[] = [
   },
   {
     id: "leave",
-    image: "/projects/leave.svg",
+    image: "/projects/leave-tracker.svg",
+    liveUrl: "https://leave-tracker-sable.vercel.app",
     type: "HR · Leave Management",
     title: "Leave Tracker",
     description:
-      "Leave requests, approval workflows, balance tracking, and government-form PDF generation — one system replacing the paper leave forms circulating between departments.",
+      "My daily driver for leave management — credit balances, applications, and approvals in one place, with official Form 6 PDFs generated on the spot.",
     problem:
-      "Leave applications moved on paper: employees filled forms by hand, supervisors signed, HR re-encoded everything. Balances lived in someone's spreadsheet.",
+      "Leave applications moved on paper: forms filled by hand, supervisors signed, HR re-encoded everything. Balances lived in someone's spreadsheet — always out of date.",
     solution:
-      "Digital leave requests with multi-level approval workflows, automatic balance computation, and one-click PDF generation of the official leave form via pdf-lib. Backed by Turso/libSQL with Prisma.",
+      "Digital leave requests with approval tracking, automatic balance computation across leave types (vacation, sick, privilege, wellness), an accrual audit trail, and one-click PDF generation of the official Form 6 via pdf-lib. NextAuth sign-in, Prisma + libSQL, scheduled accruals with node-cron. I open it daily.",
     outcomes: [
-      "End-to-end digital leave workflow — request to approval to PDF",
-      "Automatic balance tracking eliminates spreadsheet reconciliation",
-      "Official-form PDFs generated directly from approved requests",
+      "Real balances and applications tracked daily — no spreadsheet reconciliation",
+      "Accrual increments audited with reasons (e.g. mid-year credit resets)",
+      "Official Form 6 and DTS receipts printed directly from the app",
     ],
-    tech: ["Next.js", "Turso/libSQL", "Prisma", "pdf-lib", "NextAuth"],
+    tech: ["Next.js", "NextAuth", "Prisma", "libSQL", "pdf-lib", "node-cron"],
     repoUrl: "https://github.com/halords/leave-tracker",
   },
   {
     id: "ld",
-    image: "/projects/ld.svg",
-    type: "Training · Analytics",
+    image: "/projects/lnd-forms.svg",
+    liveUrl: "https://lnd-form.vercel.app",
+    type: "Training · Forms",
     title: "L&D Form Builder",
     description:
-      "A dynamic form builder for training assessments with AI-generated questions, real-time collaboration, and analytics dashboards — built for the province's Learning & Development program.",
+      "Form templates and training events for the province's Learning & Development program — build once, distribute by shortlink, collect submissions centrally.",
     problem:
       "Training assessments were static paper forms. Creating them took hours, collecting responses took weeks, and analyzing results meant tallying by hand.",
     solution:
-      "Drag-and-drop form builder with AI-generated question suggestions (Ollama Cloud), real-time collaboration via Pusher, and Recharts analytics dashboards. Printable versions via Puppeteer.",
+      "Reusable form templates (training evaluations, needs assessments) with edit, preview, duplicate, and publish controls; training events that distribute via shortlink; centralized submission collection; plus user management and training archives.",
     outcomes: [
-      "Assessment creation time cut from hours to minutes with AI assist",
-      "Real-time response collection and live analytics dashboards",
-      "Printable PDF versions for blended paper/digital workflows",
+      "Reusable templates replace rebuilding forms for every training",
+      "Shortlink distribution with centralized response collection",
+      "Full lifecycle in one portal: templates → events → submissions → archives",
     ],
-    tech: ["Next.js", "Ollama Cloud", "Pusher", "Recharts", "Puppeteer", "Turso/libSQL", "NextAuth"],
+    tech: ["Next.js"],
   },
   {
     id: "ambagan",
@@ -165,19 +143,20 @@ export const projects: Project[] = [
   },
   {
     id: "doceditor",
-    image: "/projects/doceditor.svg",
-    type: "Document Editor · Canvas",
-    title: "Template-Based Document Editor",
+    image: "/projects/nexusdocs.svg",
+    liveUrl: "https://web-editor-phi.vercel.app",
+    type: "Documents · Search · Cloud",
+    title: "NexusDocs — Personal Document Cloud",
     description:
-      "Visual document composition with reusable templates — drag-and-drop canvas editing (Konva.js) combined with rich text (Tiptap), so repeat documents start from a template instead of a blank page.",
+      "My daily document hub — I create, search, and print my documents from anywhere with internet. No more opening Word files and scrolling through pages to find things.",
     problem:
-      "Recurring office documents were rebuilt from scratch every time in Word — inconsistent formatting, no templates, no structure.",
+      "Documents lived scattered across Word files. Finding anything meant opening file after file and scrolling — and printing required being at the right computer.",
     solution:
-      "A canvas-based editor pairing Konva.js visual editing with Tiptap rich text. Templates define the structure; users drag, drop, and fill. State managed with Zustand, persisted to Turso/libSQL.",
+      "A personal document cloud: rich-text editing with Tiptap, canvas-based template composition with Konva.js, full-text search across everything I've created, and printing from any device. State managed with Zustand, persisted to Turso/libSQL.",
     outcomes: [
-      "Reusable templates enforce consistent document structure",
-      "Visual drag-and-drop editing — no design skills required",
-      "Structured storage makes documents searchable and reusable",
+      "Used daily — search replaces scrolling through Word files",
+      "Create and print documents from anywhere with internet",
+      "Templates keep recurring documents consistent",
     ],
     tech: [
       "Next.js 16",
@@ -187,5 +166,37 @@ export const projects: Project[] = [
       "Zustand",
       "Tailwind CSS v4",
     ],
+  },
+  {
+    id: "booking",
+    image: "/projects/booking.svg",
+    liveUrl: "https://booking-blond-chi.vercel.app",
+    type: "Hospitality · CRM · Hobby",
+    title: "Cozy Stays — Direct Booking CRM",
+    description:
+      "A host portal for a vacation-rental business: verification queue, booking logs, calendars, and guest automation — built as the CRM front-end for n8n automation workflows.",
+    problem:
+      "Direct bookings came through chat threads and spreadsheets — payments unverified, no audit trail, and follow-up emails sent by hand.",
+    solution:
+      "A host verification dashboard with a payment review queue, searchable booking master logs with settlement tracking, per-property availability calendars, PayMongo payment gateway integration, and automated guest email triggers (confirmation, check-in instructions, review requests). Multi-channel intake across direct web and Telegram.",
+    outcomes: [
+      "End-to-end booking ops: verification → settlement → review",
+      "Full audit trail of booking events (OTP, submission, confirmation)",
+      "Designed to pair with n8n workflow automation",
+    ],
+    tech: ["Next.js", "PayMongo"],
+  },
+  {
+    id: "printerpos",
+    type: "POS · Desktop · Hobby",
+    title: "Printer POS",
+    description:
+      "A desktop point-of-sale hobby build (Vite). The live deployment sits behind Vercel SSO, so there is no public screenshot yet — case study below is a placeholder until then.",
+    problem:
+      "Small retail counters need a simple way to ring up sales without a full enterprise POS.",
+    solution:
+      "A Vite-powered desktop POS app. Full case study and screenshots to follow once the deployment is publicly reachable.",
+    outcomes: ["Shipped as a working Vite app"],
+    tech: ["Vite"],
   },
 ];
