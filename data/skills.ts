@@ -30,11 +30,3 @@ export const skills: SkillGroup[] = [
     ],
   },
 ];
-
-export const certifications = [
-  {
-    title: "Google Data Analytics Certificate",
-    status: "In progress",
-    icon: "📜",
-  },
-];

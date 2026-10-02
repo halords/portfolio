@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { person } from "@/data/person";
-import { skills, certifications } from "@/data/skills";
+import { skills } from "@/data/skills";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SkillItem } from "@/components/ui/SkillItem";
 import { AwardPill } from "@/components/ui/AwardPill";
@@ -82,24 +82,6 @@ export function About() {
                 </div>
               ))}
             </div>
-
-            {/* Certification */}
-            {certifications.map((cert) => (
-              <div
-                key={cert.title}
-                className="mt-8 p-4 bg-gold-light/50 border border-gold/10 rounded-xl flex items-center gap-3"
-              >
-                <span className="text-xl">{cert.icon}</span>
-                <div>
-                  <div className="text-[14px] font-medium text-ink">
-                    {cert.title}
-                  </div>
-                  <div className="font-mono text-[10px] uppercase tracking-wider text-gold">
-                    {cert.status}
-                  </div>
-                </div>
-              </div>
-            ))}
           </motion.div>
         </div>
       </div>
