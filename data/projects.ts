@@ -71,15 +71,37 @@ export const projects: Project[] = [
     outcomes: [
       "Charter generation and revision centralized in one system",
       "Compliance tracking built into the workflow",
-      "Interactive client access — fewer wasted office visits",
+      "Interactive 24/7 client access to services and requirements",
     ],
     tech: [
       "Next.js 15",
+      "React 19",
       "Turborepo",
       "Tailwind CSS v4",
+      "NextAuth v5",
       "PostgreSQL",
       "Puppeteer",
+      "pdf-lib",
     ],
+    featured: true,
+  },
+  {
+    id: "iam",
+    image: "/projects/iam.svg",
+    type: "Identity · SSO · Platform",
+    title: "iam-console — Unified Identity for PGLU Apps",
+    description:
+      "One identity for every app in the organization — shared login across the feedback system and the Citizen's Charter web portal, designed to grow into an OAuth-style identity provider.",
+    problem:
+      "Every org app kept its own user store. Staff juggled separate logins per system, and admins provisioned the same person over and over.",
+    solution:
+      "A central identity service: one account, JWT sessions, Argon2id password hashing, and email flows — consumed by the feedback system and the CC portal today, with an OAuth-style provider model on the roadmap so any future app can delegate login to it.",
+    outcomes: [
+      "Single sign-on across the organization's apps",
+      "One user store to administer instead of one per app",
+      "SSO-ready architecture for future systems",
+    ],
+    tech: ["Next.js", "Prisma", "PostgreSQL", "JWT", "Argon2id", "Zod"],
     featured: true,
   },
   {
@@ -124,20 +146,21 @@ export const projects: Project[] = [
   {
     id: "ambagan",
     image: "/projects/ambagan.svg",
-    type: "Finance · Travel · Mobile",
+    liveUrl: "https://ambagan-web.vercel.app",
+    type: "Finance · Travel · Web",
     title: "Ambagan — Travel Expense Splitter",
     description:
-      "Group travel expense splitting across web and mobile — real-time calculations and shareable expense reports, built as a monorepo with React Native via Expo.",
+      "Group travel expense splitting for real trips — an integer-based calculation engine guarantees every split reconciles to the exact centavo, with strict member-only authorization.",
     problem:
       "Splitting group travel expenses meant messy chat threads and disputed math. Nobody wanted to be the accountant.",
     solution:
-      "A monorepo (Turborepo + pnpm) shipping web and native mobile from one codebase: add expenses, auto-compute who owes whom, and share the settled report. Google OAuth for sign-in.",
+      "A Turborepo + pnpm monorepo: add expenses, auto-compute who owes whom with zero rounding drift, and generate transparent receipts showing direct net payables between members. Only verified trip members can mutate expenses or budgets. Google sign-in.",
     outcomes: [
-      "One codebase shipping to web, Android, and iOS via Expo",
-      "Real-time settlement math — no more disputed splits",
-      "Shareable expense reports for the whole group",
+      "Integer-based math engine — splits always reconcile exactly",
+      "Member-only authorization on every expense mutation",
+      "Transparent receipts with direct net payables",
     ],
-    tech: ["Next.js", "Turborepo", "pnpm monorepo", "TypeScript", "Ollama Cloud", "React Native", "Expo", "Android", "Web", "Google OAuth"],
+    tech: ["Next.js", "Turborepo", "pnpm", "TypeScript"],
     featured: true,
   },
   {
@@ -151,7 +174,7 @@ export const projects: Project[] = [
     problem:
       "Documents lived scattered across Word files. Finding anything meant opening file after file and scrolling — and printing required being at the right computer.",
     solution:
-      "A personal document cloud: rich-text editing with Tiptap, canvas-based template composition with Konva.js, full-text search across everything I've created, and printing from any device. State managed with Zustand, persisted to Turso/libSQL.",
+      "A strictly template-driven editor: upload a PDF or image template as the immutable background, then overlay interactive text, images, and tables on a Konva canvas — every object stored as structured JSON, editable with Tiptap rich text. Full-text search across everything created, and printing from any device. State managed with Zustand, persisted to Turso/libSQL.",
     outcomes: [
       "Used daily — search replaces scrolling through Word files",
       "Create and print documents from anywhere with internet",
@@ -188,14 +211,18 @@ export const projects: Project[] = [
   {
     id: "printerpos",
     type: "POS · Desktop · Hobby",
-    title: "Printer POS",
+    title: "PrintShop Manager — Offline POS & Licensing",
     description:
-      "A desktop point-of-sale hobby build (Vite). The live deployment sits behind Vercel SSO, so there is no public screenshot yet — case study below is a placeholder until then.",
+      "An offline-first point-of-sale, ID photo studio, and job-order pipeline for a print shop — with Ed25519 hardware-bound licensing so the software itself is a product.",
     problem:
-      "Small retail counters need a simple way to ring up sales without a full enterprise POS.",
+      "A print shop runs on counter sales, ID photos, and job orders — three disconnected workflows, plus no way to license the software per machine.",
     solution:
-      "A Vite-powered desktop POS app. Full case study and screenshots to follow once the deployment is publicly reachable.",
-    outcomes: ["Shipped as a working Vite app"],
-    tech: ["Vite"],
+      "A Turborepo monorepo: a Tauri v2 desktop POS client (React 18 + TypeScript) that runs 100% offline, a FastAPI + OpenCV vision sidecar for AI ID photo processing (face detection, auto-crop, background removal), an 11-step job-order pipeline from NEW to RELEASED, dynamic pricing calculators, and a Next.js licensing portal with Ed25519 signatures bound to hardware fingerprints.",
+    outcomes: [
+      "100% offline-first daily operations — zero internet dependency",
+      "AI ID photo suite: face detection, 70–75% head-height auto-crop, 300 DPI output",
+      "Cryptographic per-machine licensing (Ed25519 + hardware binding)",
+    ],
+    tech: ["Tauri v2", "React 18", "TypeScript", "FastAPI", "OpenCV", "Next.js 14", "Drizzle", "Turso"],
   },
 ];
