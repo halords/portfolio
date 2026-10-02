@@ -43,7 +43,7 @@ export function Hero() {
             >
               <div className="w-8 h-[1px] bg-sage" />
               <span className="font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-sage">
-                {person.org} · Developer
+                Full-Stack Developer · {person.location}
               </span>
             </motion.div>
 
@@ -76,7 +76,7 @@ export function Hero() {
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
-              className="text-[15.5px] text-ink-soft leading-relaxed mb-8 max-w-lg text-justify"
+              className="text-[15.5px] text-ink-soft leading-relaxed mb-8 max-w-lg"
             >
               {person.bio[0]}
             </motion.p>
@@ -93,15 +93,14 @@ export function Hero() {
                 href="#projects"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-sage text-white rounded-md text-[14px] font-medium hover:bg-sage/90 transition-colors"
               >
-                View my work
+                View selected work
                 <ArrowDown size={16} />
               </a>
               <a
-                href="#contact"
+                href="#services"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--border-mid)] text-ink-soft rounded-md text-[14px] font-medium hover:border-sage hover:text-sage transition-colors"
               >
-                <Mail size={16} />
-                Get in touch
+                What I offer
               </a>
             </motion.div>
           </div>
@@ -135,19 +134,19 @@ export function Hero() {
 
                 {/* 2×2 Stats Grid */}
                 <div className="grid grid-cols-2 gap-3 mb-6">
-                  <StatBox value="8+" label="Years in service" />
-                  <StatBox value="7+" label="Systems built" />
-                  <StatBox value="4+" label="Gov't roles held" />
-                  <StatBox value="1st" label="Top 10 Awardee" />
+                  <StatBox value="8+" label="Years experience" />
+                  <StatBox value="7" label="Systems in production" />
+                  <StatBox value="4" label="Service offerings" />
+                  <StatBox value="2022" label="Top 10 Awardee" />
                 </div>
 
                 {/* Tag row */}
                 <div className="flex flex-wrap gap-1.5">
+                  <Tag text="Next.js / React" variant="gold" />
+                  <Tag text="PostgreSQL + Prisma" variant="gold" />
+                  <Tag text="AI Integration" variant="gold" />
+                  <Tag text="Workflow Automation" variant="sage" />
                   <Tag text="ISO 9001:2015" variant="sage" />
-                  <Tag text="Citizen's Charter" variant="sage" />
-                  <Tag text="Next.js" variant="gold" />
-                  <Tag text="Full-Stack Dev" variant="gold" />
-                  <Tag text="City of San Fernando, La Union" variant="sage" />
                 </div>
               </div>
             </div>

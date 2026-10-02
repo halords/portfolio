@@ -6,7 +6,7 @@ export interface SkillGroup {
 
 export const skills: SkillGroup[] = [
   {
-    title: "Government & Administration",
+    title: "Operations & Compliance",
     variant: "sage",
     items: [
       "ISO 9001:2015 QMS",
