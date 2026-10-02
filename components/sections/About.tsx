@@ -27,7 +27,7 @@ export function About() {
               A developer who understands operations
             </h2>
             <p className="text-[14px] text-ink-muted mb-8">
-              Eight years inside government administration, eight projects
+              Eight years inside government administration, seven projects
               shipped — I build software for the workflows most developers
               never see.</p>
 

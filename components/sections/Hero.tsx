@@ -135,7 +135,7 @@ export function Hero() {
                 {/* 2×2 Stats Grid */}
                 <div className="grid grid-cols-2 gap-3 mb-6">
                   <StatBox value="8+" label="Years experience" />
-                  <StatBox value="8" label="Projects shipped" />
+                  <StatBox value="7" label="Projects shipped" />
                   <StatBox value="4" label="Service offerings" />
                   <StatBox value="2022" label="Top 10 Awardee" />
                 </div>
