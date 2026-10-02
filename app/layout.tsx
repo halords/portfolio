@@ -23,17 +23,18 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Harold Erick Jamora — Administrative Officer & Developer",
+  title: "halords — Harold Erick Jamora · Full-Stack Developer",
   description:
-    "Public servant and full-stack developer at the Provincial Government of La Union. Builder of internal systems, feedback tools, and civic tech.",
+    "halords is the studio site of Harold Erick Jamora, full-stack developer at the Provincial Government of La Union. Production systems, workflow automation, and AI integration — software people actually use every day.",
   openGraph: {
-    title: "Harold Erick Jamora",
-    description: "Public servant by day, builder by night.",
+    title: "halords — Harold Erick Jamora",
+    description: "I build web applications that automate real workflows.",
     url: "https://haroldjamora.dev",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: { card: "summary_large_image" },
   keywords: [
+    "halords",
     "Harold Jamora",
     "La Union developer",
     "Next.js",

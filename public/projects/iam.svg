@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1f2e"/>
+      <stop offset="1" stop-color="#12151f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#g)"/>
+  <circle cx="640" cy="330" r="120" fill="none" stroke="#4a7c6f" stroke-width="6"/>
+  <circle cx="640" cy="330" r="72" fill="none" stroke="#b5863a" stroke-width="6"/>
+  <circle cx="640" cy="330" r="24" fill="#4a7c6f"/>
+  <text x="80" y="150" font-family="DejaVu Sans, sans-serif" font-size="34" letter-spacing="4" fill="#ffffff" opacity="0.75">IDENTITY · SSO</text>
+  <text x="80" y="560" font-family="Georgia, 'DejaVu Serif', serif" font-size="72" fill="#ffffff">iam-console</text>
+  <rect x="80" y="588" width="120" height="8" fill="#b5863a"/>
+  <text x="80" y="640" font-family="DejaVu Sans, sans-serif" font-size="32" fill="#c8d2cd">halords · full-stack developer</text>
+</svg>

@@ -22,7 +22,7 @@ export function Career() {
           viewport={{ once: true, amount: 0.2 }}
           className="mb-12 max-w-3xl mx-auto"
         >
-          <SectionLabel text="Background" />
+          <SectionLabel text="Background" index="04" />
           <h2
             className="font-serif text-ink mb-3"
             style={{ fontSize: "clamp(26px, 3.5vw, 38px)" }}

@@ -70,7 +70,7 @@ export function Contact() {
               viewport={{ once: true, amount: 0.2 }}
               className="text-center mb-12"
             >
-              <SectionLabel text="Let's connect" />
+              <SectionLabel text="Let's connect" index="05" />
               <h2
                 className="font-serif text-white mb-4"
                 style={{ fontSize: "clamp(26px, 3.5vw, 38px)" }}
