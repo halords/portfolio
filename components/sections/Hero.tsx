@@ -17,7 +17,15 @@ export function Hero() {
     >
       <div className="section-container grid gap-12 pb-16 pt-14 sm:pt-20 lg:grid-cols-12 lg:gap-8 lg:pb-24">
         <Reveal className="min-w-0 lg:col-span-7">
-          <div className="flex items-center gap-3">
+          <h1
+            id="hero-heading"
+            className="font-sans text-[46px] font-extrabold leading-[1.0] tracking-[-0.03em] sm:text-[68px] lg:text-[80px]"
+          >
+            <span className="block text-charcoal">Harold Erick M.</span>
+            <span className="block text-accent">Jamora</span>
+          </h1>
+
+          <div className="mt-6 flex items-center gap-3">
             <span
               aria-hidden="true"
               className="block h-[3px] w-10 shrink-0 bg-accent"
@@ -27,17 +35,10 @@ export function Hero() {
             </p>
           </div>
 
-          <h1
-            id="hero-heading"
-            className="mt-7 font-display text-[40px] font-semibold leading-[1.05] tracking-[-0.03em] text-charcoal sm:text-[56px] lg:text-[68px]"
-          >
-            <span className="block">{person.name}</span>
-            <span className="block">I build production web systems —</span>
-            <span className="block">
-              and automate the work{" "}
-              <span className="text-accent">around them.</span>
-            </span>
-          </h1>
+          <p className="mt-5 max-w-xl text-[25px] font-semibold leading-[1.15] tracking-[-0.02em] text-charcoal sm:text-[30px] lg:text-[34px]">
+            I build production web systems — and automate the work{" "}
+            <span className="text-accent">around them.</span>
+          </p>
 
           <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-charcoal-soft">
             In production today: an{" "}
@@ -118,4 +119,3 @@ export function Hero() {
     </section>
   );
 }
-

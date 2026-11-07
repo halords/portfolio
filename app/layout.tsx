@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { Navbar } from "@/components/nav/Navbar";
+import { BackToTop } from "@/components/ui/BackToTop";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
@@ -66,6 +67,7 @@ export default function RootLayout({
         </a>
         <Navbar />
         <main id="main">{children}</main>
+        <BackToTop />
       </body>
     </html>
   );
