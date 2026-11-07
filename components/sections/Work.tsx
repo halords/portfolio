@@ -1,4 +1,4 @@
-import { projects, type Project } from "@/data/projects";
+import { projects } from "@/data/projects";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CaseStudy } from "@/components/ui/CaseStudy";
 import { ContactCTA } from "@/components/ui/ContactCTA";
@@ -11,7 +11,6 @@ export function Work() {
     (p) => p.group === "independent" && !p.featured,
   );
   const pad = (n: number) => String(n).padStart(2, "0");
-  const mihon: Project | undefined = projects.find((p) => p.id === "mihon");
 
   return (
     <section
@@ -83,28 +82,9 @@ export function Work() {
       </div>
 
       <p className="kicker mt-12 text-charcoal-soft">Independent projects</p>
-      {mihon && (
-        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-t border-hairline py-5">
-          <span className="font-mono text-[13px] font-medium text-accent tabular">
-            01
-          </span>
-          <a
-            href={`#work-${mihon.id}`}
-            className="inline-flex min-h-11 items-center font-display text-[20px] text-charcoal underline decoration-hairline underline-offset-4 hover:text-accent hover:decoration-accent focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-accent focus-visible:outline-offset-2"
-          >
-            Mihon PWA — Offline-First Manga Reader for iOS
-          </a>
-          <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-faded">
-            {mihon.status}
-          </span>
-          <span className="ml-auto font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
-            Featured case study ↑
-          </span>
-        </div>
-      )}
       <div>
         {independent.map((p, i) => (
-          <CaseStudy key={p.id} project={p} numeral={pad(i + 2)} />
+          <CaseStudy key={p.id} project={p} numeral={pad(i + 1)} />
         ))}
       </div>
 

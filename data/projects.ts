@@ -75,7 +75,6 @@ export const projects: Project[] = [
   {
     id: "mihon",
     group: "independent",
-    featured: true,
     status: "Live — personal project",
     role: "Designer & technical lead — architecture, build direction, QA",
     type: "PWA · Offline-First · Reader",
@@ -148,6 +147,7 @@ export const projects: Project[] = [
   {
     id: "cc",
     group: "pglu",
+    featured: true,
     status: "Live — public",
     role: "Sole designer, builder & maintainer",
     type: "Public-Facing · Civic Tech",
@@ -157,7 +157,9 @@ export const projects: Project[] = [
     problem:
       "Producing and revising the Citizen's Charter was manual and document-heavy, and staying compliant meant constant re-checking; citizens had no way to check services before visiting in person.",
     solution:
-      "A structured-data platform: charter content is authored once, then generated into a public portal and Puppeteer-rendered printable versions, with revision workflows that keep everything compliant.",
+      "A structured-data platform: charter content is authored once, then generated into a public portal and Puppeteer-rendered printable versions, with revision workflows that keep everything compliant. Staff author and revise content through the IAM Console's single sign-on.",
+    decision:
+      "The charter is data, not a document: it lives as structured records in a single source of truth, and the public portal and the printed charter are both generated from those same records — a revision lands in every version, with no separate copies to keep in sync.",
     outcomes: [
       "Charter generation and revision centralized in one system",
       "Compliance tracking built into the workflow",
@@ -171,6 +173,7 @@ export const projects: Project[] = [
       "Puppeteer",
       "pdf-lib",
     ],
+    liveUrl: "https://citizenscharter.launion.gov.ph",
   },
   {
     id: "leave",
