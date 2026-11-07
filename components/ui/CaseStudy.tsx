@@ -46,30 +46,24 @@ export function CaseStudy({
     };
   }, [project.id]);
 
-  return (
-    <article
-      ref={articleRef}
-      id={`work-${project.id}`}
-      className={
-        featured
-          ? "scroll-mt-28 bg-parchment p-6 sm:p-9"
-          : "scroll-mt-28 border-t border-hairline py-7"
-      }
-    >
-      <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-        <span className="font-mono text-[13px] font-medium text-accent tabular">
-          {numeral}
-        </span>
-        <span
-          className={`font-mono text-[11px] uppercase tracking-[0.16em] ${labelColor}`}
-        >
-          {project.type}
-        </span>
-        <span className="ml-auto border border-hairline px-2 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-charcoal-soft">
-          {project.status}
-        </span>
-      </div>
+  const metaRow = (
+    <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+      <span className="font-mono text-[13px] font-medium text-accent tabular">
+        {numeral}
+      </span>
+      <span
+        className={`font-mono text-[11px] uppercase tracking-[0.16em] ${labelColor}`}
+      >
+        {project.type}
+      </span>
+      <span className="ml-auto border border-hairline px-2 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-charcoal-soft">
+        {project.status}
+      </span>
+    </div>
+  );
 
+  const headerContent = (
+    <>
       <h3
         className={
           featured
@@ -106,6 +100,66 @@ export function CaseStudy({
           }
         />
       </button>
+    </>
+  );
+
+  return (
+    <article
+      ref={articleRef}
+      id={`work-${project.id}`}
+      className={
+        featured
+          ? "scroll-mt-28 bg-parchment p-6 sm:p-9"
+          : "scroll-mt-28 border-t border-hairline py-7"
+      }
+    >
+      {featured ? (
+        <>
+          {metaRow}
+
+          <div className="mt-2 grid gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-7">{headerContent}</div>
+
+            {project.plate && (
+              <figure className="lg:col-span-5 lg:mt-3">
+                <div className="border border-hairline bg-bone p-2">
+                  <img
+                    src={project.plate.src}
+                    alt={project.plate.alt}
+                    width={1280}
+                    height={720}
+                    loading="lazy"
+                    className="h-auto w-full border border-hairline"
+                  />
+                </div>
+                <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-charcoal-soft">
+                  {project.plate.caption}
+                </figcaption>
+              </figure>
+            )}
+          </div>
+        </>
+      ) : (
+        <div className="flex gap-4 sm:gap-5">
+          {project.plate && (
+            <div className="w-[84px] shrink-0 sm:w-28">
+              <img
+                src={project.plate.src}
+                alt={project.plate.alt}
+                className="aspect-[16/10] w-full border border-hairline object-cover"
+                loading="lazy"
+                width={320}
+                height={200}
+              />
+            </div>
+          )}
+
+          <div className="min-w-0 flex-1">
+            {metaRow}
+            {headerContent}
+          </div>
+        </div>
+      )}
 
       {expanded && (
         <div
@@ -196,4 +250,3 @@ export function CaseStudy({
     </article>
   );
 }
-

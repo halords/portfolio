@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a7c6f"/>
+      <stop offset="1" stop-color="#1a1f2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#g)"/>
+  <path d="M990 252 H1110 V432 L1095 420 L1080 432 L1065 420 L1050 432 L1035 420 L1020 432 L1005 420 L990 432 Z" fill="none" stroke="#ffffff" stroke-width="6" opacity="0.2"/>
+  <line x1="1014" y1="290" x2="1086" y2="290" stroke="#b5863a" stroke-width="6" opacity="0.4"/>
+  <line x1="1014" y1="326" x2="1068" y2="326" stroke="#b5863a" stroke-width="6" opacity="0.4"/>
+  <text x="80" y="150" font-family="DejaVu Sans, sans-serif" font-size="34" letter-spacing="4" fill="#ffffff" opacity="0.75">POS · DESKTOP</text>
+  <text x="80" y="230" font-family="Georgia, 'DejaVu Serif', serif" font-size="72" fill="#ffffff"><tspan x="80" dy="0">PrintShop Manager</tspan><tspan x="80" dy="84">Offline POS &amp; Licensing</tspan></text>
+  <rect x="80" y="588" width="120" height="8" fill="#b5863a"/>
+  <text x="80" y="640" font-family="DejaVu Sans, sans-serif" font-size="32" fill="#c8d2cd">harold jamora · full-stack developer</text>
+</svg>

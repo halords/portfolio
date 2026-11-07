@@ -16,6 +16,7 @@ export interface Project {
   tech: string[];
   liveUrl?: string;
   repoUrl?: string;
+  plate?: { src: string; alt: string; caption: string };
 }
 
 export const projects: Project[] = [
@@ -48,6 +49,11 @@ export const projects: Project[] = [
       "Prisma",
       "NextAuth",
     ],
+    plate: {
+      src: "/projects/feedback.svg",
+      alt: "Artwork plate for the AI Customer Feedback System — title card reading “AI-Powered Customer Feedback System”",
+      caption: "Artwork plate — abstract; internal system, no live data shown",
+    },
   },
   {
     id: "iam",
@@ -71,6 +77,11 @@ export const projects: Project[] = [
       "SSO-ready architecture for future systems",
     ],
     tech: ["Next.js", "Prisma", "PostgreSQL", "JWT", "Argon2id", "Zod"],
+    plate: {
+      src: "/projects/iam.svg",
+      alt: "Artwork plate for the IAM Console — concentric-circle motif with the title “iam-console”",
+      caption: "Artwork plate — abstract; internal system, no live data shown",
+    },
   },
   {
     id: "mihon",
@@ -101,6 +112,11 @@ export const projects: Project[] = [
       "MangaDex API",
     ],
     liveUrl: "https://mihon-ios.vercel.app",
+    plate: {
+      src: "/projects/mihon.svg",
+      alt: "Artwork plate for the Mihon PWA — title card reading “Mihon PWA, Manga Reader for iOS”",
+      caption: "Artwork plate",
+    },
   },
   {
     id: "drrrf",
@@ -121,6 +137,11 @@ export const projects: Project[] = [
       "Full audit trail supporting ISO 9001:2015 documentation requirements",
     ],
     tech: ["Next.js", "Prisma", "Tailwind CSS", "SWR", "NextAuth"],
+    plate: {
+      src: "/projects/drrrf.svg",
+      alt: "Artwork plate for the Document Revision Request System — title card",
+      caption: "Artwork plate — abstract; internal system, no live data shown",
+    },
   },
   {
     id: "pdr",
@@ -143,6 +164,11 @@ export const projects: Project[] = [
       "Fewer consolidation errors — one standardized form per office replaces manual merging",
     ],
     tech: ["MS Teams Forms", "Automation", "Data Collection"],
+    plate: {
+      src: "/projects/pdr.svg",
+      alt: "Artwork plate for Personnel Discipline Reports — title card with a bar-chart motif",
+      caption: "Artwork plate — abstract; internal system, no live data shown",
+    },
   },
   {
     id: "cc",
@@ -174,6 +200,11 @@ export const projects: Project[] = [
       "pdf-lib",
     ],
     liveUrl: "https://citizenscharter.launion.gov.ph",
+    plate: {
+      src: "/projects/cc.svg",
+      alt: "Artwork plate for the PGLU Citizen's Charter Portal — title card",
+      caption: "Artwork plate",
+    },
   },
   {
     id: "leave",
@@ -196,6 +227,11 @@ export const projects: Project[] = [
     tech: ["Next.js", "NextAuth", "Prisma", "libSQL", "pdf-lib", "node-cron"],
     liveUrl: "https://leave-tracker-sable.vercel.app",
     repoUrl: "https://github.com/halords/leave-tracker",
+    plate: {
+      src: "/projects/leave-tracker.svg",
+      alt: "Screenshot of the Leave Tracker application interface",
+      caption: "App screenshot",
+    },
   },
   {
     id: "ld",
@@ -217,6 +253,11 @@ export const projects: Project[] = [
     ],
     tech: ["Next.js"],
     liveUrl: "https://lnd-form.vercel.app",
+    plate: {
+      src: "/projects/lnd-forms.svg",
+      alt: "Screenshot of the L&D Form Builder application interface",
+      caption: "App screenshot",
+    },
   },
   {
     id: "ambagan",
@@ -238,6 +279,11 @@ export const projects: Project[] = [
     ],
     tech: ["Next.js", "Turborepo", "pnpm", "TypeScript"],
     liveUrl: "https://ambagan-web.vercel.app",
+    plate: {
+      src: "/projects/ambagan.svg",
+      alt: "Artwork plate for Ambagan — title card reading “Ambagan, Travel Expense Splitter”",
+      caption: "Artwork plate",
+    },
   },
   {
     id: "doceditor",
@@ -259,6 +305,11 @@ export const projects: Project[] = [
     ],
     tech: ["Next.js 16", "Konva.js", "Tiptap", "Turso/libSQL", "Zustand"],
     liveUrl: "https://web-editor-phi.vercel.app",
+    plate: {
+      src: "/projects/nexusdocs.svg",
+      alt: "Screenshot of the NexusDocs document editor interface",
+      caption: "App screenshot",
+    },
   },
   {
     id: "booth",
@@ -281,6 +332,11 @@ export const projects: Project[] = [
     tech: ["Next.js 15", "TypeScript", "Canvas API", "IndexedDB", "PWA"],
     liveUrl: "https://photo-booth.vercel.app",
     repoUrl: "https://github.com/halords/photo-booth",
+    plate: {
+      src: "/projects/booth.svg",
+      alt: "Artwork plate for Booth — title card reading “Booth, Photo Booth PWA” with a photo-strip motif",
+      caption: "Artwork plate",
+    },
   },
   {
     id: "booking",
@@ -302,6 +358,11 @@ export const projects: Project[] = [
     ],
     tech: ["Next.js", "PayMongo"],
     liveUrl: "https://booking-blond-chi.vercel.app",
+    plate: {
+      src: "/projects/booking.svg",
+      alt: "Screenshot of the Cozy Stays direct-booking CRM interface",
+      caption: "App screenshot",
+    },
   },
   {
     id: "printerpos",
@@ -331,5 +392,10 @@ export const projects: Project[] = [
       "Drizzle",
       "Turso",
     ],
+    plate: {
+      src: "/projects/printerpos.svg",
+      alt: "Artwork plate for PrintShop Manager — title card with a receipt motif",
+      caption: "Artwork plate",
+    },
   },
 ];

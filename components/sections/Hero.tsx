@@ -29,7 +29,7 @@ export function Hero() {
 
           <h1
             id="hero-heading"
-            className="mt-7 font-display text-[44px] font-medium leading-[1.02] tracking-[-0.015em] text-charcoal sm:text-6xl lg:text-[76px]"
+            className="mt-7 font-display text-[40px] font-semibold leading-[1.05] tracking-[-0.03em] text-charcoal sm:text-[56px] lg:text-[68px]"
           >
             <span className="block">{person.name}</span>
             <span className="block">I build production web systems —</span>

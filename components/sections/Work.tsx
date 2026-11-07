@@ -62,6 +62,17 @@ export function Work() {
               <span className="font-mono text-[13px] font-medium text-accent tabular">
                 {pad(i + 1)}
               </span>
+              {p.plate && (
+                <img
+                  src={p.plate.src}
+                  alt=""
+                  aria-hidden="true"
+                  className="h-9 w-16 shrink-0 self-center border border-hairline object-cover max-sm:hidden"
+                  loading="lazy"
+                  width={320}
+                  height={200}
+                />
+              )}
               <a
                 href={`#work-${p.id}`}
                 className="inline-flex min-h-11 items-center font-display text-[20px] text-charcoal underline decoration-hairline underline-offset-4 hover:text-accent hover:decoration-accent focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-accent focus-visible:outline-offset-2"

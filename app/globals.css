@@ -25,9 +25,9 @@
   --color-accent-tint: var(--accent-tint);
   --color-ondark-faded: var(--on-dark-faded);
 
-  --font-display: var(--font-fraunces);
-  --font-sans: var(--font-grotesk);
-  --font-mono: var(--font-plex);
+  --font-display: var(--font-inter);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-inter);
 }
 
 @layer base {
@@ -40,6 +40,11 @@
     @apply font-sans antialiased;
     background-color: var(--bone);
     color: var(--charcoal);
+  }
+
+  .font-display {
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 
   ::selection {
@@ -79,7 +84,7 @@
   }
 
   .kicker {
-    font-family: var(--font-plex), monospace;
+    font-family: var(--font-inter);
     font-size: 11px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
