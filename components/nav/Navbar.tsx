@@ -1,137 +1,119 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { Logo } from "@/components/brand/Logo";
+import { useState } from "react";
+import { Menu, X, Mail } from "lucide-react";
+import { person } from "@/data/person";
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Background", href: "#career" },
-  { label: "Contact", href: "#contact" },
+const links = [
+  { href: "#work", label: "Work" },
+  { href: "#services", label: "Services" },
+  { href: "#va", label: "VA & Admin" },
+  { href: "#background", label: "Background" },
+  { href: "#contact", label: "Contact" },
 ];
 
+const focusStyles =
+  "focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-accent focus-visible:outline-offset-2";
+
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []);
-
-  // Transparent over the dark hero; frosted light once scrolled.
-  const overDark = !scrolled && !mobileOpen;
+  const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <motion.nav
-        initial={{ opacity: 0, y: -4 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="fixed top-0 left-0 right-0 z-50 h-[60px] flex items-center transition-all duration-300"
-        style={
-          overDark
-            ? {
-                backgroundColor: "transparent",
-                borderBottom: "1px solid transparent",
-              }
-            : {
-                backgroundColor: "rgba(247, 246, 243, 0.90)",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-                borderBottom: "1px solid var(--border)",
-                boxShadow: scrolled ? "0 1px 3px rgba(26,31,46,0.06)" : "none",
-              }
-        }
-      >
-        <div className="section-container w-full flex items-center justify-between">
-          {/* Brand */}
-          <a href="#hero" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
-            <Logo size={30} />
-            <span
-              className={`font-mono text-[19px] font-semibold tracking-tight ${
-                overDark ? "text-white" : "text-ink"
-              }`}
+    <header className="sticky top-0 z-40 border-b border-hairline bg-bone">
+      <div className="section-container flex h-16 items-center justify-between gap-4">
+        <a
+          href="#hero"
+          className={`flex min-h-11 items-baseline gap-3 ${focusStyles}`}
+          onClick={() => setOpen(false)}
+        >
+          <span className="font-mono text-[15px] font-medium tracking-[0.08em] text-charcoal">
+            halords
+          </span>
+          <span className="hidden text-[13px] text-faded md:inline">
+            Harold Erick M. Jamora
+          </span>
+        </a>
+
+        <nav
+          aria-label="Primary"
+          className="hidden items-center gap-7 lg:flex"
+        >
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className={`inline-flex min-h-11 items-center font-mono text-[12px] uppercase tracking-[0.16em] text-charcoal-soft transition-colors hover:text-accent motion-reduce:transition-none ${focusStyles}`}
             >
-              halords<span className="text-gold">.</span>
-            </span>
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="flex shrink-0 items-center gap-3">
+          <a
+            href={`mailto:${person.email}`}
+            className={`hidden min-h-11 items-center gap-2 border border-charcoal px-4 font-mono text-[12px] uppercase tracking-[0.16em] text-charcoal transition-colors hover:bg-charcoal hover:text-bone motion-reduce:transition-none sm:inline-flex ${focusStyles}`}
+          >
+            <Mail size={14} aria-hidden="true" />
+            Email me
           </a>
 
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+          <button
+            type="button"
+            className={`inline-flex min-h-11 min-w-11 items-center justify-center text-charcoal lg:hidden ${focusStyles}`}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label="Toggle navigation"
+            onClick={() => setOpen((previous) => !previous)}
+          >
+            {open ? (
+              <X size={20} aria-hidden="true" />
+            ) : (
+              <Menu size={20} aria-hidden="true" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {open && (
+        <nav
+          id="mobile-nav"
+          aria-label="Mobile"
+          className="border-t border-hairline lg:hidden"
+          onKeyDown={(event) => {
+            if (event.key === "Escape") {
+              setOpen(false);
+              event.currentTarget.parentElement
+                ?.querySelector<HTMLButtonElement>(
+                  'button[aria-controls="mobile-nav"]',
+                )
+                ?.focus();
+            }
+          }}
+        >
+          <div className="section-container flex flex-col py-2">
+            {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`text-[14px] transition-colors duration-200 ${
-                  overDark
-                    ? "text-white/70 hover:text-white"
-                    : "text-ink-soft hover:text-sage"
-                }`}
+                className={`flex min-h-11 items-center font-mono text-[13px] uppercase tracking-[0.16em] text-charcoal ${focusStyles}`}
+                onClick={() => setOpen(false)}
               >
                 {link.label}
               </a>
             ))}
+            <a
+              href={`mailto:${person.email}`}
+              className={`flex min-h-11 items-center py-2 font-mono text-[13px] uppercase tracking-[0.16em] text-accent ${focusStyles}`}
+              onClick={() => setOpen(false)}
+            >
+              <span className="min-w-0 [overflow-wrap:anywhere]">
+                Email me — {person.email}
+              </span>
+            </a>
           </div>
-
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className={`md:hidden p-2 transition-colors ${
-              overDark
-                ? "text-white/80 hover:text-white"
-                : "text-ink-soft hover:text-ink"
-            }`}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </motion.nav>
-
-      {/* Mobile overlay */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-surface flex flex-col items-center justify-center gap-10"
-          >
-            {navLinks.map((link, i) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ delay: i * 0.08 }}
-                className="font-serif text-3xl text-ink hover:text-sage transition-colors"
-              >
-                {link.label}
-              </motion.a>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+        </nav>
+      )}
+    </header>
   );
 }
