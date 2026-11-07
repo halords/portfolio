@@ -1,88 +1,78 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Code2, Bot, Workflow, ClipboardCheck, Check } from "lucide-react";
-import { services, type Service } from "@/data/services";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-
-const icons: Record<Service["icon"], typeof Code2> = {
-  code: Code2,
-  bot: Bot,
-  workflow: Workflow,
-  clipboard: ClipboardCheck,
-};
+import { ArrowRight } from "lucide-react";
+import { services } from "@/data/services";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
+import { ContactCTA } from "@/components/ui/ContactCTA";
 
 export function Services() {
   return (
-    <section id="services" className="section-padding bg-white">
-      <div className="section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="mb-12"
-        >
-          <SectionLabel text="Services" index="02" />
-          <h2
-            className="font-serif text-ink mb-3"
-            style={{ fontSize: "clamp(26px, 3.5vw, 38px)" }}
-          >
-            What I can do for you
-          </h2>
-          <p className="text-[14px] text-ink-muted max-w-xl">
-            Four ways to work with me — from full product builds to taking
-            operations work off your plate.
-          </p>
-        </motion.div>
+    <section
+      id="services"
+      className="section-container scroll-mt-20 py-20 lg:py-28"
+    >
+      <Reveal>
+        <SectionHeading
+          index="02"
+          eyebrow="Services — development"
+          title="What I can build for you"
+        />
+        <p className="mt-5 max-w-2xl text-[16.5px] leading-relaxed text-charcoal-soft">
+          Four offers, each already proven on a system in production — the proof
+          link under each one points at the real thing.
+        </p>
+      </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {services.map((service, index) => {
-            const Icon = icons[service.icon];
-            return (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.08,
-                  ease: "easeOut",
-                }}
-                viewport={{ once: true, amount: 0.2 }}
-                className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-7 hover:border-sage-mid hover:-translate-y-[3px] transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-xl bg-sage-light flex items-center justify-center mb-5">
-                  <Icon size={22} className="text-sage" />
-                </div>
-                <div className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-sage mb-2">
-                  {service.tagline}
-                </div>
-                <h3 className="font-serif text-[22px] text-ink mb-3">
-                  {service.title}
+      <div className="mt-12">
+        {services.map((s, i) => (
+          <Reveal key={s.id}>
+            <article className="grid gap-6 border-t border-hairline py-9 lg:grid-cols-12 lg:gap-8">
+              <div className="lg:col-span-4">
+                <span className="font-mono text-[13px] font-medium text-accent tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-2 font-display text-[26px] leading-tight text-charcoal">
+                  {s.title}
                 </h3>
-                <p className="text-[14.5px] text-ink-soft leading-relaxed mb-6">
-                  {service.description}
+                <p className="mt-1 font-mono text-[11.5px] uppercase tracking-[0.14em] text-faded">
+                  {s.tagline}
                 </p>
-                <ul className="space-y-2.5">
-                  {service.deliverables.map((d) => (
-                    <li
-                      key={d}
-                      className="flex items-start gap-2.5 text-[13.5px] text-ink-soft"
-                    >
-                      <Check
-                        size={15}
-                        className="text-sage shrink-0 mt-[3px]"
-                      />
-                      <span>{d}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            );
-          })}
-        </div>
+              </div>
+
+              <div className="lg:col-span-5">
+                <p className="text-[15.5px] leading-relaxed text-charcoal-soft">
+                  {s.description}
+                </p>
+                <a
+                  href={s.proofHref}
+                  className="mt-4 inline-flex min-h-11 items-center gap-2 font-mono text-[12px] uppercase tracking-[0.14em] text-accent hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-accent"
+                >
+                  {s.proofLabel}
+                  <ArrowRight size={14} aria-hidden="true" />
+                </a>
+              </div>
+
+              <ul className="space-y-2 lg:col-span-3">
+                {s.deliverables.map((d) => (
+                  <li
+                    key={d}
+                    className="flex gap-3 text-[14px] leading-relaxed text-charcoal-soft"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-[8px] h-1.5 w-1.5 shrink-0 bg-accent"
+                    />
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </Reveal>
+        ))}
       </div>
+
+      <Reveal className="mt-14">
+        <ContactCTA text="Have a workflow that eats your team's week? That's the brief I work best from." />
+      </Reveal>
     </section>
   );
 }

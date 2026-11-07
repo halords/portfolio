@@ -1,183 +1,121 @@
-"use client";
-
-import { motion, type Variants } from "framer-motion";
 import { ArrowDown, Mail } from "lucide-react";
 import { person } from "@/data/person";
-
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.15 + i * 0.12, duration: 0.7, ease: "easeOut" as const },
-  }),
-};
-
-const systems = [
-  "feedback v3",
-  "citizen's charter web",
-  "nexusdocs",
-  "iam console",
-  "leave tracker",
-  "ambagan",
-  "l&d forms",
-  "printer pos",
-];
-
-const values = [
-  "Policy-aware builder",
-  "ISO 9001 certified process",
-  "Full-stack Next.js developer",
-  "AI-integrated systems",
-  "End-user focused design",
-];
-
-const stats = [
-  { value: "8+", label: "years of service" },
-  { value: "7", label: "production systems shipped" },
-  { value: "2022", label: "outstanding public servant" },
-];
+import { projects } from "@/data/projects";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function Hero() {
+  const featuredProjects = projects
+    .filter((project) => project.featured)
+    .slice(0, 3);
+  const mailto = `mailto:${person.email}`;
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col overflow-hidden bg-ink-deep text-surface"
+      aria-labelledby="hero-heading"
+      className="relative overflow-hidden bg-bone"
     >
-      {/* Ambient glows */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-48 right-[-12%] h-[600px] w-[600px] rounded-full bg-sage/25 blur-[160px]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-[-25%] left-[-12%] h-[520px] w-[520px] rounded-full bg-gold/15 blur-[160px]"
-      />
-      {/* Watermark */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-28 select-none text-center font-serif leading-none text-white/[0.03]"
-        style={{ fontSize: "22vw" }}
-      >
-        halords
-      </div>
+      <div className="section-container grid gap-12 pb-16 pt-14 sm:pt-20 lg:grid-cols-12 lg:gap-8 lg:pb-24">
+        <Reveal className="min-w-0 lg:col-span-7">
+          <div className="flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              className="block h-[3px] w-10 shrink-0 bg-accent"
+            />
+            <p className="kicker text-charcoal-soft">
+              Full-Stack Developer · Next.js / React · La Union, PH
+            </p>
+          </div>
 
-      <div className="section-container relative flex flex-1 items-center pt-[60px]">
-        <div className="max-w-3xl py-24">
-          <motion.div
-            custom={0}
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="mb-7 flex items-center gap-3"
+          <h1
+            id="hero-heading"
+            className="mt-7 font-display text-[44px] font-medium leading-[1.02] tracking-[-0.015em] text-charcoal sm:text-6xl lg:text-[76px]"
           >
-            <div className="h-[1px] w-10 bg-gold" />
-            <span className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-sage-mid">
-              halords · full-stack developer · {person.location}
+            <span className="block">{person.name}</span>
+            <span className="block">I build production web systems —</span>
+            <span className="block">
+              and automate the work{" "}
+              <span className="text-accent">around them.</span>
             </span>
-          </motion.div>
+          </h1>
 
-          <motion.h1
-            custom={1}
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="font-serif leading-[1.02] text-white"
-            style={{ fontSize: "clamp(44px, 7vw, 92px)" }}
-          >
-            I build systems that{" "}
-            <span className="text-gold">run the office.</span>
-          </motion.h1>
-
-          <motion.p
-            custom={2}
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="mt-6 text-lg italic text-white/55"
-          >
-            &ldquo;{person.tagline}&rdquo;
-          </motion.p>
-
-          <motion.p
-            custom={3}
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="mt-4 max-w-xl text-[15.5px] leading-relaxed text-white/70"
-          >
-            {person.bio[0]}
-          </motion.p>
-
-          <motion.div
-            custom={4}
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="mt-10 flex flex-wrap gap-3"
-          >
+          <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-charcoal-soft">
+            In production today: an{" "}
             <a
-              href="#projects"
-              className="inline-flex items-center gap-2 rounded-md bg-gold px-6 py-3 text-[14px] font-semibold text-ink-deep transition-colors hover:bg-gold/90"
+              href="#work-feedback"
+              className="text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent"
             >
-              View selected work
-              <ArrowDown size={16} />
+              AI-assisted feedback system
+            </a>{" "}
+            reading citizen responses, and the single sign-on console the rest of
+            the office&apos;s apps share — two of seven systems I run for the
+            Provincial Government of La Union.
+          </p>
+
+          <div className="mt-9 flex flex-wrap gap-3">
+            <a
+              href="#work"
+              className="inline-flex min-h-11 items-center gap-2 bg-charcoal px-6 font-mono text-[12px] uppercase tracking-[0.16em] text-bone transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-accent focus-visible:outline-offset-2"
+            >
+              See the work
+              <ArrowDown size={15} aria-hidden="true" className="shrink-0" />
             </a>
             <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-md border border-white/20 px-6 py-3 text-[14px] font-medium text-white/80 transition-colors hover:border-white/50 hover:text-white"
+              href={mailto}
+              className="inline-flex min-h-11 min-w-0 items-center gap-2 border border-charcoal px-6 font-mono text-[12px] uppercase tracking-[0.16em] text-charcoal transition-colors hover:bg-charcoal hover:text-bone focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-accent focus-visible:outline-offset-2"
             >
-              Get in touch
-              <Mail size={16} />
+              <Mail size={15} aria-hidden="true" className="shrink-0" />
+              <span className="break-all">{person.email}</span>
             </a>
-          </motion.div>
+          </div>
 
-          {/* Value props — integrated into the hero */}
-          <motion.div
-            custom={5}
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/10 pt-8"
+          <div className="mt-9 border-t border-hairline pt-5">
+            <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-charcoal-soft">
+              {person.availability}
+            </p>
+            <p className="mt-2 font-mono text-[12px] leading-relaxed text-faded">
+              {person.availabilityDetail}
+            </p>
+          </div>
+        </Reveal>
+
+        <Reveal
+          delay={0.12}
+          className="min-w-0 lg:col-span-4 lg:col-start-9 lg:pt-24"
+        >
+          <p id="hero-proof-heading" className="kicker text-faded">
+            Selected proof
+          </p>
+          <ul
+            aria-labelledby="hero-proof-heading"
+            className="mt-4 border-t border-hairline"
           >
-            {values.map((v) => (
-              <span
-                key={v}
-                className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-white/50"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-                {v}
-              </span>
+            {featuredProjects.map((project, index) => (
+              <li key={project.id} className="border-b border-hairline">
+                <a
+                  href={`#work-${project.id}`}
+                  className="group block min-h-11 py-4 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-accent focus-visible:outline-offset-2"
+                >
+                  <span className="tabular font-mono text-[12px] tabular-nums text-accent">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="mt-1 block font-display text-[19px] leading-snug text-charcoal transition-colors group-hover:text-accent">
+                    {project.title}
+                  </span>
+                  <span className="mt-1 block text-[13.5px] leading-relaxed text-charcoal-soft">
+                    {project.outcomeLine}
+                  </span>
+                </a>
+              </li>
             ))}
-          </motion.div>
-        </div>
-      </div>
+          </ul>
 
-      {/* Stats strip */}
-      <div className="relative border-t border-white/10">
-        <div className="section-container grid grid-cols-1 gap-6 py-8 sm:grid-cols-3">
-          {stats.map((s) => (
-            <div key={s.label}>
-              <div className="font-serif text-3xl text-white">{s.value}</div>
-              <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">
-                {s.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Shipped-systems ticker */}
-      <div className="relative overflow-hidden border-t border-white/10 py-4">
-        <div className="animate-ticker flex w-max whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.28em] text-white/35">
-          {[...systems, ...systems].map((s, i) => (
-            <span key={i} className="flex items-center">
-              <span className="px-6">{s}</span>
-              <span className="text-gold/60">·</span>
-            </span>
-          ))}
-        </div>
+          <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.18em] text-faded">
+            7 PGLU systems in production — 6 internal, 1 public
+          </p>
+        </Reveal>
       </div>
     </section>
   );
 }
+

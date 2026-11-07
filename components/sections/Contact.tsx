@@ -1,212 +1,273 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { useState, type FormEvent } from "react";
 import emailjs from "@emailjs/browser";
+import { person } from "@/data/person";
+import { CopyEmail } from "@/components/ui/CopyEmail";
+import { Reveal } from "@/components/ui/Reveal";
 import {
   Mail,
   Phone,
-  ExternalLink,
+  FileText,
+  Code2,
+  ArrowUpRight,
   Send,
-  CheckCircle,
-  AlertCircle,
 } from "lucide-react";
-import { person } from "@/data/person";
-import { SectionLabel } from "@/components/ui/SectionLabel";
+
+const emailjsReady = Boolean(
+  process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID &&
+    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID &&
+    process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+);
 
 export function Contact() {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [isSending, setIsSending] = useState(false);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "sent" | "error"
+  >("idle");
 
-  const sendEmail = (e: React.FormEvent) => {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setIsSending(true);
-    setStatus("idle");
 
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    if (!emailjsReady || status === "sending") return;
 
-    if (!serviceId || !templateId || !publicKey) {
-      console.error("EmailJS credentials missing from environment variables.");
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    setStatus("sending");
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
+        {
+          from_name: String(formData.get("from_name") ?? ""),
+          from_email: String(formData.get("from_email") ?? ""),
+          message: String(formData.get("message") ?? ""),
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string,
+      );
+
+      setStatus("sent");
+      form.reset();
+    } catch {
       setStatus("error");
-      setIsSending(false);
-      return;
     }
-
-    emailjs
-      .sendForm(serviceId, templateId, formRef.current!, publicKey)
-      .then(() => {
-        setStatus("success");
-        formRef.current!.reset();
-      })
-      .catch((error: unknown) => {
-        console.error("EmailJS Error:", error);
-        setStatus("error");
-      })
-      .finally(() => {
-        setIsSending(false);
-      });
-  };
+  }
 
   return (
-    <section id="contact" className="section-padding" style={{ paddingBottom: "6rem" }}>
-      <div className="section-container">
-        <div
-          className="relative rounded-[20px] overflow-hidden px-6 py-16 md:px-12 md:py-20"
-          style={{ backgroundColor: "var(--ink)" }}
+    <section
+      id="contact"
+      aria-labelledby="contact-heading"
+      className="scroll-mt-20 bg-charcoal text-bone"
+    >
+      <div className="section-container py-20 lg:py-28">
+        <div className="flex items-baseline gap-3">
+          <span className="font-mono text-[13px] font-medium text-bone/60">
+            05
+          </span>
+          <span className="kicker text-bone/60">Contact</span>
+        </div>
+
+        <h2
+          id="contact-heading"
+          className="mt-4 font-display text-4xl leading-[1.05] text-bone sm:text-5xl"
         >
-          {/* Decorative circles */}
-          <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-sage/5 blur-2xl pointer-events-none" />
-          <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-gold/5 blur-2xl pointer-events-none" />
+          Open to the right part-time role.
+        </h2>
 
-          <div className="relative z-10 max-w-4xl mx-auto">
-            {/* Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.2 }}
-              className="text-center mb-12"
-            >
-              <SectionLabel text="Let's connect" index="05" />
-              <h2
-                className="font-serif text-white mb-4"
-                style={{ fontSize: "clamp(26px, 3.5vw, 38px)" }}
-              >
-                Open to the right{" "}
-                <em className="text-sage-mid italic">opportunity</em>.
-              </h2>
-              <p className="text-[15.5px] text-white/50 max-w-md mx-auto text-left">
-                Whether you have a project in mind, a question about my work, or
-                an opportunity to discuss — I&apos;d love to hear from you.
+        <div className="mt-12 grid gap-12 lg:grid-cols-12">
+          <Reveal className="min-w-0 lg:col-span-6">
+            <p className="text-[16.5px] leading-relaxed text-bone/80">
+              I&apos;m looking for part-time remote work in two lanes:{" "}
+              <strong className="text-bone">
+                development &amp; AI automation
+              </strong>{" "}
+              (primary) and{" "}
+              <strong className="text-bone">
+                administrative / VA support
+              </strong>
+              . If your team is drowning in manual, document-heavy work, I can
+              either build the system that fixes it — or run the process properly
+              myself.
+            </p>
+
+            <div className="mt-8 space-y-3 border-t border-bone/15 pt-6 font-mono text-[12.5px] leading-relaxed text-bone/70">
+              <p>
+                <span className="text-bone/40">CAPACITY — </span>
+                {person.availability}
               </p>
-            </motion.div>
+              <p>
+                <span className="text-bone/40">HOURS — </span>
+                {person.availabilityDetail}
+              </p>
+              <p>
+                <span className="text-bone/40">SEPARATION — </span>
+                Freelance work happens outside government hours, on my own
+                equipment. No government data, systems, or time are involved.
+              </p>
+              <p>
+                <span className="text-bone/40">FASTEST ROUTE — </span>
+                Email. Include the role or project, expected hours, and your
+                start date, and I&apos;ll reply with fit and next steps.
+              </p>
+            </div>
+          </Reveal>
 
-            {/* Contact links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.2 }}
-              className="flex flex-wrap justify-center gap-4 mb-14"
-            >
+          <Reveal className="min-w-0 lg:col-span-6">
+            <p className="kicker flex items-center gap-2 text-bone/60">
+              <Mail size={14} aria-hidden="true" />
+              Email — primary
+            </p>
+
+            <div className="mt-3 flex flex-wrap items-center gap-4">
               <a
                 href={`mailto:${person.email}`}
-                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-white/80 text-[14px] hover:bg-white/10 hover:border-white/20 transition-all"
+                className="inline-flex min-h-11 items-center break-all font-display text-[26px] leading-tight text-bone underline decoration-accent underline-offset-8 hover:decoration-bone focus-ring-dark"
               >
-                <Mail size={16} />
                 {person.email}
               </a>
-              <a
-                href={`tel:${person.phone}`}
-                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-white/80 text-[14px] hover:bg-white/10 hover:border-white/20 transition-all"
-              >
-                <Phone size={16} />
-                {person.phoneFormatted}
-              </a>
-              <a
-                href={person.resumeLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-white/80 text-[14px] hover:bg-white/10 hover:border-white/20 transition-all"
-              >
-                <ExternalLink size={16} />
-                Resumé
-              </a>
-            </motion.div>
+              <CopyEmail email={person.email} />
+            </div>
 
-            {/* Contact form */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.2 }}
-            >
+            <dl className="mt-9 border-t border-bone/15">
+              <div className="flex items-center justify-between gap-4 border-b border-bone/15 py-4">
+                <dt className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-bone/60">
+                  <Phone size={14} aria-hidden="true" />
+                  Phone
+                </dt>
+                <dd>
+                  <span className="text-bone">{person.phoneDisplay}</span>
+                </dd>
+              </div>
+
+              <div className="flex items-center justify-between gap-4 border-b border-bone/15 py-4">
+                <dt className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-bone/60">
+                  <FileText size={14} aria-hidden="true" />
+                  Résumé
+                </dt>
+                <dd>
+                  <a
+                    href={person.resumeUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-11 items-center gap-1.5 text-bone underline decoration-bone/30 underline-offset-4 hover:decoration-bone focus-ring-dark"
+                  >
+                    View résumé
+                    <ArrowUpRight size={14} aria-hidden="true" />
+                  </a>
+                </dd>
+              </div>
+
+              <div className="flex items-center justify-between gap-4 border-b border-bone/15 py-4">
+                <dt className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-bone/60">
+                  <Code2 size={14} aria-hidden="true" />
+                  GitHub
+                </dt>
+                <dd className="min-w-0">
+                  <a
+                    href={person.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-11 items-center gap-1.5 break-all text-bone underline decoration-bone/30 underline-offset-4 hover:decoration-bone focus-ring-dark"
+                  >
+                    github.com/halords
+                    <ArrowUpRight
+                      size={14}
+                      className="shrink-0"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </dd>
+              </div>
+            </dl>
+
+            {emailjsReady && (
               <form
-                ref={formRef}
-                onSubmit={sendEmail}
-                className="max-w-2xl mx-auto space-y-5"
+                onSubmit={onSubmit}
+                className="mt-9 border-t border-bone/15 pt-7"
+                noValidate={false}
+                aria-busy={status === "sending"}
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block font-mono text-[10px] font-medium uppercase tracking-[0.15em] text-white/30 mb-2 px-1">
+                <p className="kicker text-bone/60">Or send a message</p>
+
+                <div className="mt-5 flex flex-col gap-5">
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="contact-from-name"
+                      className="block font-mono text-[11px] uppercase tracking-wider text-bone/60"
+                    >
                       Name
                     </label>
                     <input
-                      required
+                      id="contact-from-name"
+                      name="from_name"
                       type="text"
-                      name="user_name"
+                      autoComplete="name"
+                      required
                       placeholder="Your name"
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-[14px] placeholder-white/20 focus:border-sage-mid/50 focus:bg-white/[0.07] focus:outline-none transition-all"
+                      className="min-h-11 w-full border border-bone/25 bg-transparent px-4 py-3 text-[15px] text-bone placeholder:text-bone/35 focus:border-bone focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-bone"
                     />
                   </div>
-                  <div>
-                    <label className="block font-mono text-[10px] font-medium uppercase tracking-[0.15em] text-white/30 mb-2 px-1">
+
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="contact-from-email"
+                      className="block font-mono text-[11px] uppercase tracking-wider text-bone/60"
+                    >
                       Email
                     </label>
                     <input
-                      required
+                      id="contact-from-email"
+                      name="from_email"
                       type="email"
-                      name="user_email"
-                      placeholder="Your email"
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-[14px] placeholder-white/20 focus:border-sage-mid/50 focus:bg-white/[0.07] focus:outline-none transition-all"
+                      autoComplete="email"
+                      required
+                      placeholder="you@company.com"
+                      className="min-h-11 w-full border border-bone/25 bg-transparent px-4 py-3 text-[15px] text-bone placeholder:text-bone/35 focus:border-bone focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-bone"
                     />
                   </div>
-                </div>
 
-                <div>
-                  <label className="block font-mono text-[10px] font-medium uppercase tracking-[0.15em] text-white/30 mb-2 px-1">
-                    Message
-                  </label>
-                  <textarea
-                    required
-                    name="message"
-                    rows={5}
-                    placeholder="Tell me about your project or opportunity..."
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-[14px] placeholder-white/20 focus:border-sage-mid/50 focus:bg-white/[0.07] focus:outline-none transition-all resize-none"
-                  />
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="contact-message"
+                      className="block font-mono text-[11px] uppercase tracking-wider text-bone/60"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      rows={4}
+                      required
+                      placeholder="What are we building — or what needs running?"
+                      className="min-h-11 w-full border border-bone/25 bg-transparent px-4 py-3 text-[15px] text-bone placeholder:text-bone/35 focus:border-bone focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid focus-visible:outline-bone"
+                    />
+                  </div>
                 </div>
 
                 <button
                   type="submit"
-                  disabled={isSending}
-                  className={`w-full py-3.5 rounded-xl font-medium text-[14px] flex items-center justify-center gap-2.5 transition-all active:scale-[0.98] ${
-                    status === "success"
-                      ? "bg-sage text-white"
-                      : status === "error"
-                        ? "bg-red-500/80 text-white"
-                        : "bg-white text-ink hover:bg-white/90"
-                  }`}
+                  disabled={status === "sending"}
+                  className="mt-6 inline-flex min-h-11 items-center gap-2 bg-bone px-6 font-mono text-[12px] uppercase tracking-[0.16em] text-charcoal transition-colors hover:bg-accent hover:text-bone disabled:opacity-60 focus-ring-dark"
                 >
-                  {isSending ? (
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        duration: 1,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                      className="w-5 h-5 border-2 border-ink border-t-transparent rounded-full"
-                    />
-                  ) : status === "success" ? (
-                    <>
-                      <CheckCircle size={18} /> Message sent!
-                    </>
-                  ) : status === "error" ? (
-                    <>
-                      <AlertCircle size={18} /> Something went wrong
-                    </>
-                  ) : (
-                    <>
-                      <Send size={18} /> Send message
-                    </>
-                  )}
+                  {status === "sending" ? "Sending…" : "Send message"}
+                  <Send size={14} aria-hidden="true" />
                 </button>
+
+                {status === "sent" && (
+                  <p role="status" className="mt-4 text-[14px] text-bone">
+                    Message sent — I&apos;ll reply by email.
+                  </p>
+                )}
+
+                {status === "error" && (
+                  <p role="alert" className="mt-4 text-[14px] text-bone">
+                    That didn&apos;t send. Email me directly at {person.email}.
+                  </p>
+                )}
               </form>
-            </motion.div>
-          </div>
+            )}
+          </Reveal>
         </div>
       </div>
     </section>
