@@ -1,32 +1,31 @@
 export interface SkillGroup {
   title: string;
-  variant: "sage" | "gold";
   items: string[];
 }
 
 export const skills: SkillGroup[] = [
   {
-    title: "Operations & Compliance",
-    variant: "sage",
+    title: "Development & Technical",
     items: [
-      "ISO 9001:2015 QMS",
-      "Citizen's Charter",
-      "Records Management",
-      "Compliance Reporting",
-      "Stakeholder Liaison",
-      "Performance Reports",
+      "Next.js / React / TypeScript",
+      "PostgreSQL · Prisma ORM",
+      "NextAuth & role-based access",
+      "AI integration (Ollama, Gemini)",
+      "Excel / PDF generation (ExcelJS, pdf-lib)",
+      "Google APIs & Workspace automation",
+      "Data pipelines (Puppeteer)",
+      "Turso / libSQL",
     ],
   },
   {
-    title: "Development & Technical",
-    variant: "gold",
+    title: "Operations & Compliance",
     items: [
-      "Next.js / React",
-      "PostgreSQL / SQLite",
-      "Prisma ORM",
-      "Google APIs",
-      "AI Integration",
-      "Excel / PDF Export",
+      "ISO 9001:2015 QMS",
+      "Citizen's Charter",
+      "Records management",
+      "Compliance reporting",
+      "Stakeholder liaison",
+      "Performance reports",
     ],
   },
 ];
